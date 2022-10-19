@@ -46,12 +46,15 @@ CREATE TABLE IF NOT EXISTS Track(
 		FOREIGN KEY(category) 
 			REFERENCES Categories(id)
 );
+
 CREATE TABLE IF NOT EXISTS songArtist(
-	
     category INT NOT NULL,
     artist INT NOT NULL,
     PRIMARY KEY (category,artist),
-	FOREIGN KEY (category) REFERENCES Categories,
-	FOREIGN KEY (artist) REFERENCES Artist
-	
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id),
+	CONSTRAINT fk_artist 
+		FOREIGN KEY(artist) 
+			REFERENCES Artist(id)
 );
