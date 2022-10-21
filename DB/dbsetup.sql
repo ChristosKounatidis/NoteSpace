@@ -1,20 +1,24 @@
-CREATE TABLE OR REPLACE Producer(
+DROP TABLE IF EXISTS `Producer`;
+CREATE TABLE Producer(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
 );
 
-CREATE TABLE OR REPLACE Artist(
+DROP TABLE IF EXISTS `Artist`;
+CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
 	category INT
 );
 
-CREATE TABLE OR REPLACE Categories(
+DROP TABLE IF EXISTS `Categories`;
+CREATE TABLE Categories(
 	id SERIAL PRIMARY KEY,
 	category VARCHAR(15)
 );
 
-CREATE TABLE OR REPLACE Album(
+DROP TABLE IF EXISTS `Album`;
+CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
 	category INT,
@@ -25,7 +29,8 @@ CREATE TABLE OR REPLACE Album(
 			REFERENCES Artist(id)
 );
 
-CREATE TABLE OR REPLACE Track(
+DROP TABLE IF EXISTS `Track`;
+CREATE TABLE Track(
 	id INT NOT NULL,
 	name VARCHAR(30),
 	producerid INT,
@@ -42,7 +47,8 @@ CREATE TABLE OR REPLACE Track(
 			REFERENCES Categories(id)
 );
 
-CREATE TABLE OR REPLACE songArtist(
+DROP TABLE IF EXISTS `songArtist`;
+CREATE TABLE songArtist(
     category INT NOT NULL,
     artist INT NOT NULL,
     PRIMARY KEY (category,artist),
@@ -53,5 +59,3 @@ CREATE TABLE OR REPLACE songArtist(
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
 );
-
---Γιατι ετσι μας αρεσει
