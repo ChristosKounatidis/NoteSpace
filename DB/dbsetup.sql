@@ -1,41 +1,36 @@
-CREATE TABLE IF NOT EXISTS Producer(
-	id INT NOT NULL,
+CREATE TABLE OR REPLACE Producer(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(15)
+);
+
+CREATE TABLE OR REPLACE Artist(
+	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
-	PRIMARY KEY (id)
+	category INT
 );
 
-CREATE TABLE IF NOT EXISTS Artist(
-	id INT NOT NULL,
-	name VARCHAR(15),
-	category INT,	
-	PRIMARY KEY (id)
+CREATE TABLE OR REPLACE Categories(
+	id SERIAL PRIMARY KEY,
+	category VARCHAR(15)
 );
 
-CREATE TABLE IF NOT EXISTS Categories(
-	id INT NOT NULL,
-	category VARCHAR(15),
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS Album(
-	id INT NOT NULL,
+CREATE TABLE OR REPLACE Album(
+	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
 	category INT,
 	releasedata DATE,
 	artist INT,
-	PRIMARY KEY (id),
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
 );
 
-CREATE TABLE IF NOT EXISTS Track(
+CREATE TABLE OR REPLACE Track(
 	id INT NOT NULL,
 	name VARCHAR(30),
 	producerid INT,
 	albumid INT,
 	category INT,
-	PRIMARY KEY (id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producerid) 
 			REFERENCES Producer(id),
@@ -47,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Track(
 			REFERENCES Categories(id)
 );
 
-CREATE TABLE IF NOT EXISTS songArtist(
+CREATE TABLE OR REPLACE songArtist(
     category INT NOT NULL,
     artist INT NOT NULL,
     PRIMARY KEY (category,artist),
