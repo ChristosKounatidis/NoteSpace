@@ -13,7 +13,7 @@ CREATE TABLE Producer(
 CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
-	PRIMARY KEY (id)
+	category INT
 );
 
 CREATE TABLE Categories(
