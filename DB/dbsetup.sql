@@ -1,23 +1,26 @@
-DROP TABLE IF EXISTS `Producer`;
+DROP TABLE IF EXISTS Track;
+DROP TABLE IF EXISTS Album;
+DROP TABLE IF EXISTS songArtist;
+DROP TABLE IF EXISTS Artist;
+DROP TABLE IF EXISTS Categories;
+DROP TABLE IF EXISTS Producer;
+
 CREATE TABLE Producer(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
 );
 
-DROP TABLE IF EXISTS `Artist`;
 CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
 	category INT
 );
 
-DROP TABLE IF EXISTS `Categories`;
 CREATE TABLE Categories(
 	id SERIAL PRIMARY KEY,
 	category VARCHAR(15)
 );
 
-DROP TABLE IF EXISTS `Album`;
 CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
@@ -29,7 +32,6 @@ CREATE TABLE Album(
 			REFERENCES Artist(id)
 );
 
-DROP TABLE IF EXISTS `Track`;
 CREATE TABLE Track(
 	id INT NOT NULL,
 	name VARCHAR(30),
@@ -47,7 +49,6 @@ CREATE TABLE Track(
 			REFERENCES Categories(id)
 );
 
-DROP TABLE IF EXISTS `songArtist`;
 CREATE TABLE songArtist(
     category INT NOT NULL,
     artist INT NOT NULL,
