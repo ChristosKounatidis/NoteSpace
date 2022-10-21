@@ -13,7 +13,10 @@ CREATE TABLE Producer(
 CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
-	category INT
+	category INT,
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id)
 );
 
 CREATE TABLE Categories(
@@ -27,7 +30,6 @@ CREATE TABLE Album(
 	category INT,
 	releasedata DATE,
 	artist INT,
-	PRIMARY KEY (id),
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
@@ -39,7 +41,6 @@ CREATE TABLE Track(
 	producerid INT,
 	albumid INT,
 	category INT,
-	PRIMARY KEY (id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producerid) 
 			REFERENCES Producer(id),
