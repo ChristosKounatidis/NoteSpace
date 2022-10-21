@@ -10,6 +10,11 @@ CREATE TABLE Producer(
 	name VARCHAR(15)
 );
 
+CREATE TABLE Categories(
+	id SERIAL PRIMARY KEY,
+	category VARCHAR(15)
+);
+
 CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15),
@@ -17,11 +22,6 @@ CREATE TABLE Artist(
 	CONSTRAINT fk_category 
 		FOREIGN KEY(category) 
 			REFERENCES Categories(id)
-);
-
-CREATE TABLE Categories(
-	id SERIAL PRIMARY KEY,
-	category VARCHAR(15)
 );
 
 CREATE TABLE Album(
