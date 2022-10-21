@@ -53,3 +53,5 @@ CREATE TABLE OR REPLACE songArtist(
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
 );
+
+--Γιατι ετσι μας αρεσει
