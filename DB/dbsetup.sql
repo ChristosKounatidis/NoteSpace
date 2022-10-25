@@ -63,3 +63,8 @@ CREATE TABLE songArtist(
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
 );
+
+CREATE TABLE users(
+	userName VARCHAR(20) NOT NULL,
+	pwd VARCHAR(20) NOT NULL
+)
