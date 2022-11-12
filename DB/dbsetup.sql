@@ -33,6 +33,12 @@ AS $function$
     END;
 $function$;
 
+CREATE TABLE users(
+  username character varying(20) NOT NULL,
+  pwd character varying(20) NOT NULL
+)
+
+
 select tables();
 -------------------------------------------
 
