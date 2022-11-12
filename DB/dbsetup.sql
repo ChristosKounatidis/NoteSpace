@@ -1,71 +1,81 @@
-DROP TABLE IF EXISTS Track;
-DROP TABLE IF EXISTS Album;
-DROP TABLE IF EXISTS songArtist;
-DROP TABLE IF EXISTS Artist;
-DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS Producer;
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE Producer(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(15)
-);
+--DROP TABLE IF EXISTS
 
 CREATE TABLE Categories(
 	id SERIAL PRIMARY KEY,
 	category VARCHAR(15)
 );
 
+CREATE TABLE Song(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(30)
+);
+
 CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(15),
-	category INT,
-	CONSTRAINT fk_category 
-		FOREIGN KEY(category) 
-			REFERENCES Categories(id)
+	name VARCHAR(15)
 );
 
 CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	category INT,
-	releasedata DATE,
-	artist INT,
-	CONSTRAINT fk_artist 
-		FOREIGN KEY(artist) 
-			REFERENCES Artist(id)
+	releasedate DATE
 );
 
-CREATE TABLE Track(
-	id INT NOT NULL,
-	name VARCHAR(30),
-	producerid INT,
-	albumid INT,
-	category INT,
-	CONSTRAINT fk_producer 
-		FOREIGN KEY(producerid) 
-			REFERENCES Producer(id),
-	CONSTRAINT fk_album 
-		FOREIGN KEY(albumid) 
-			REFERENCES Album(id),
-	CONSTRAINT fk_category 
-		FOREIGN KEY(category) 
-			REFERENCES Categories(id)
-);
-
-CREATE TABLE songArtist(
-    category INT NOT NULL,
-    artist INT NOT NULL,
-    PRIMARY KEY (category,artist),
-	CONSTRAINT fk_category 
-		FOREIGN KEY(category) 
-			REFERENCES Categories(id),
-	CONSTRAINT fk_artist 
-		FOREIGN KEY(artist) 
-			REFERENCES Artist(id)
+CREATE TABLE Producer(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(15)
 );
 
 CREATE TABLE users(
 	userName VARCHAR(20) NOT NULL,
 	pwd VARCHAR(20) NOT NULL
-)
+);
+-------------------------------------------
+
+CREATE TABLE Album_Songs(
+	category INT,
+	album INT,
+	song INT,
+	PRIMARY KEY (category,album,song),
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id),
+	CONSTRAINT fk_album 
+		FOREIGN KEY(album) 
+			REFERENCES Album(id),
+	CONSTRAINT fk_song 
+		FOREIGN KEY(song) 
+			REFERENCES Song(id)
+);
+
+CREATE TABLE Produced_By(
+	category INT,
+	producer INT,
+	song INT,
+	PRIMARY KEY (category,producer,song),
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id),
+	CONSTRAINT fk_producer 
+		FOREIGN KEY(producer) 
+			REFERENCES Producer(id),
+	CONSTRAINT fk_song 
+		FOREIGN KEY(song) 
+			REFERENCES Song(id)
+);
+
+CREATE TABLE Album_Details(
+	category INT,
+	artist INT,
+	album INT,
+	PRIMARY KEY (category,artist,album),
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id),
+	CONSTRAINT fk_artist 
+		FOREIGN KEY(artist) 
+			REFERENCES Artist(id),
+	CONSTRAINT fk_album 
+		FOREIGN KEY(album) 
+			REFERENCES Album(id)
+);
