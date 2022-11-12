@@ -79,3 +79,19 @@ CREATE TABLE Album_Details(
 		FOREIGN KEY(album) 
 			REFERENCES Album(id)
 );
+
+CREATE TABLE Singles(
+	category INT,
+	artist INT,
+	song INT,
+	PRIMARY KEY (category,artist,album),
+	CONSTRAINT fk_category 
+		FOREIGN KEY(category) 
+			REFERENCES Categories(id),
+	CONSTRAINT fk_artist 
+		FOREIGN KEY(artist) 
+			REFERENCES Artist(id),
+	CONSTRAINT fk_song 
+		FOREIGN KEY(song) 
+			REFERENCES Song(id)
+);
