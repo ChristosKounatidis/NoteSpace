@@ -1,9 +1,12 @@
-
 CREATE OR REPLACE FUNCTION tables()
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
     BEGIN
+	DROP TABLE IF EXISTS Album_Songs;
+	DROP TABLE IF EXISTS Produced_By;
+	DROP TABLE IF EXISTS Album_Details;
+	DROP TABLE IF EXISTS Singles;
     DROP TABLE IF EXISTS Categories;
 	CREATE TABLE Categories(
 	id SERIAL PRIMARY KEY,
@@ -91,7 +94,6 @@ AS $function$
     END;
 $function$;
 
-
 CREATE OR REPLACE FUNCTION Album_Details()
  RETURNS void
  LANGUAGE plpgsql
@@ -126,7 +128,7 @@ AS $function$
 	category INT,
 	artist INT,
 	song INT,
-	PRIMARY KEY (category,artist,album),
+	PRIMARY KEY (category,artist,song),
 	CONSTRAINT fk_category 
 		FOREIGN KEY(category) 
 			REFERENCES Categories(id),
@@ -137,6 +139,10 @@ AS $function$
 		FOREIGN KEY(song) 
 			REFERENCES Song(id)
 );
- 
     END;
 $function$;
+
+select Album_Songs();
+select Produced_By();
+select Album_Details();
+select Singles();
