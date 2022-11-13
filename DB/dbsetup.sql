@@ -32,11 +32,11 @@ AS $function$
 	);
     END;
 $function$;
-
+DROP TABLE IF EXISTS users;
 CREATE TABLE users(
   username character varying(20) NOT NULL,
   pwd character varying(20) NOT NULL
-)
+);
 
 
 select tables();
