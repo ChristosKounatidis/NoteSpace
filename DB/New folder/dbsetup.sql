@@ -20,15 +20,11 @@ CREATE TABLE Artist(
 CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	releasedata DATE,
+	releasedate DATE,
 	artist INT,
-	song INT,
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
-			REFERENCES Artist(id),
-	CONSTRAINT fk_song 
-		FOREIGN KEY(song) 
-			REFERENCES Song(id)
+			REFERENCES Artist(id)
 );
 
 CREATE TABLE Song(
