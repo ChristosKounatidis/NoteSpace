@@ -70,9 +70,8 @@ AS $function$
     CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	releasedata DATE,
+	releasedate DATE,
 	artist INT,
-	song INT,
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
