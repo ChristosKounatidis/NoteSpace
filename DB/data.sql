@@ -64,4 +64,9 @@ select new_Artist(Claude Picasso);
 select new_Artist(Georges Rodin);
 select new_Artist(Keith Basquiat);
 
+select new_Album(Spilled beans);
+select new_Album(Nine yards);
+select new_Album(Honesty);
+select new_Album(Impulse reaction);
+select new_Album(Ghost stories);
 
