@@ -25,12 +25,16 @@ AS $function$
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION new_Song(song_name int,producer_name int,album int,category VARCHAR(15))
+CREATE OR REPLACE FUNCTION new_Song(song_name VARCHAR(30),artist int,producer_name int,album int,category VARCHAR(30))
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
+declare
+song VARCHAR(30);
     BEGIN
-    insert into Song(name,producer,album,category) values ($1,$2,$3,$4);
+    insert into Song(name,producer,album,category) values ($1,$3,$4,$5::Category);
+	song := (select id from Song where name=$1);
+    insert into Artist_Song(artist,song) values ($2,song::int);
     END;
 $function$;
 
@@ -43,7 +47,7 @@ AS $function$
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION new_Artist_Song(Username VARCHAR(20),pass VARCHAR(20))
+CREATE OR REPLACE FUNCTION new_User(Username VARCHAR(20),pass VARCHAR(20))
  RETURNS void
  LANGUAGE plpgsql
 AS $function$

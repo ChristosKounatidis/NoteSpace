@@ -115,3 +115,4 @@ SELECT create_Producers();
 SELECT create_Album();
 SELECT create_Song();
 SELECT create_users();
+SELECT create_Artist_Song();
