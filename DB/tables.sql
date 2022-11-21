@@ -33,7 +33,23 @@ AS $function$
     END;
 $function$;
 
-
+CREATE OR REPLACE FUNCTION create_Album()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    DROP TABLE if EXISTS Album;
+    CREATE TABLE Album(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(30),
+	releasedate DATE,
+	artist INT,
+	CONSTRAINT fk_artist 
+		FOREIGN KEY(artist) 
+			REFERENCES Artist(id)
+    );
+    END;
+$function$;
 
 CREATE OR REPLACE FUNCTION create_Song()
  RETURNS void
@@ -57,24 +73,6 @@ AS $function$
 	CONSTRAINT fk_album 
 		FOREIGN KEY(album) 
 			REFERENCES Album(id)
-    );
-    END;
-$function$;
-
-CREATE OR REPLACE FUNCTION create_Album()
- RETURNS void
- LANGUAGE plpgsql
-AS $function$
-    BEGIN
-    DROP TABLE if EXISTS Album;
-    CREATE TABLE Album(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(30),
-	releasedate DATE,
-	artist INT,
-	CONSTRAINT fk_artist 
-		FOREIGN KEY(artist) 
-			REFERENCES Artist(id)
     );
     END;
 $function$;
