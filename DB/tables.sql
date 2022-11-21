@@ -12,7 +12,7 @@ CREATE OR REPLACE FUNCTION create_Producers()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Producer if EXISTS;
+    DROP TABLE if EXISTS Producer;
     CREATE TABLE Producer(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
@@ -25,7 +25,7 @@ CREATE OR REPLACE FUNCTION create_Artist()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Artist if EXISTS;
+    DROP TABLE if EXISTS Artist;
     CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION create_Song()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Song if EXISTS;
+    DROP TABLE if EXISTS Song;
     CREATE TABLE Song(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
@@ -66,7 +66,7 @@ CREATE OR REPLACE FUNCTION create_Album()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Album if EXISTS;
+    DROP TABLE if EXISTS Album;
     CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
@@ -85,7 +85,7 @@ CREATE OR REPLACE FUNCTION create_Artist_Song()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Artist_Song if EXISTS;
+    DROP TABLE if EXISTS Artist_Song;
     CREATE TABLE Artist_Song(
 	artist INT,
 	song INT,
@@ -105,7 +105,7 @@ CREATE OR REPLACE FUNCTION create_users()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    DROP TABLE Users if EXISTS;
+    DROP TABLE if EXISTS Users;
     CREATE TABLE Users(
 	username VARCHAR(20),
 	pwd		 VARCHAR(20)
