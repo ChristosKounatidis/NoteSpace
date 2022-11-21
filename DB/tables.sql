@@ -109,3 +109,9 @@ AS $function$
     );
     END;
 $function$;
+
+SELECT create_Artist();
+SELECT create_Producers();
+SELECT create_Album();
+SELECT create_Song();
+SELECT create_users();
