@@ -16,12 +16,22 @@ AS $function$
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION new_Song(song_name VARCHAR(30),producer_name VARCHAR(15),category VARCHAR(15))
+CREATE OR REPLACE FUNCTION new_Song(song_name int,producer_name int,album int,category VARCHAR(15))
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    insert into Song(name,producer,category) values ($1,$2,$3);
+    insert into Song(name,producer,album,category) values ($1,$2,$3,$4);
+    END;
+$function$;
+
+
+CREATE OR REPLACE FUNCTION new_Album(song_name int,producer_name int,album int,category VARCHAR(15))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    insert into Song(name,producer,album,category) values ($1,$2,$3,$4);
     END;
 $function$;
 
