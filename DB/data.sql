@@ -52,14 +52,16 @@ AS $function$
     END;
 $function$;
 
-select new_Producer(Tillman Gyles );
-select new_Producer(Akeem Mcilvenny );
-select new_Producer(Ainsleigh Kluss );
-select new_Producer(Elimelech Olvey );
-select new_Producer(Alyn Seider );
-select new_Producer(Austyn Brisby );
-select new_Producer(Shayan Moine );
-select new_Producer(Ezechiel Mangaoang );
-select new_Producer(Clair Lunter );
-select new_Producer(Flannery Grafton );
-select new_Producer(Carrol Kallmeyer );
+select new_Producer(Tillman Gyles);
+select new_Producer(Akeem Mcilvenny);
+select new_Producer(Ainsleigh Kluss);
+select new_Producer(Elimelech Olvey);
+select new_Producer(Alyn Seider);
+
+select new_Artist(Edvard Bacon);
+select new_Artist(Wassily Kandinsky);
+select new_Artist(Claude Picasso);
+select new_Artist(Georges Rodin);
+select new_Artist(Keith Basquiat);
+
+
