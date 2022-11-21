@@ -70,3 +70,23 @@ select new_Album(Honesty);
 select new_Album(Impulse reaction);
 select new_Album(Ghost stories);
 
+select new_Song(White Horse);
+select new_Song(cheery wings);
+select new_Song(Little Lion Man);
+select new_Song(legendary YOUTH);
+select new_Song(eez-eh);
+select new_Song(All My Grenade);
+select new_Song(Retro june);
+select new_Song(teen Flashback);
+select new_Song(easy Grenade);
+select new_Song(rubber Kindness);
+select new_Song(Burn queen);
+select new_Song(Often Motion);
+select new_Song(Alternative);
+select new_Song(The Reason);
+select new_Song(Happier Angel);
+select new_Song(The Same);
+
+
+
+
