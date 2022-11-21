@@ -32,13 +32,17 @@ CREATE TABLE Song(
 	name VARCHAR(30),
 	artist INT,
 	producer INT,
+	album INT,
 	category Category,
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producer) 
-			REFERENCES Producer(id)
+			REFERENCES Producer(id),
+	CONSTRAINT fk_album 
+		FOREIGN KEY(album) 
+			REFERENCES Album(id)
 );
 
 CREATE TABLE Artist_Song(
