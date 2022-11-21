@@ -7,27 +7,63 @@ DROP TYPE IF EXISTS Category;
 
 CREATE TYPE Category AS ENUM ('Pop', 'Rock', 'Hiphop','Country');
 
-CREATE TABLE Producer(
+CREATE OR REPLACE FUNCTION create_Producers()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Producer(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
-);
+    );
+    END;
+$function$;
 
-CREATE TABLE Artist(
+CREATE OR REPLACE FUNCTION create_Artist()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(15)
-);
+    );
+    END;
+$function$;
 
-CREATE TABLE Song(
+
+
+CREATE OR REPLACE FUNCTION create_Song()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Song(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
+	artist INT,
 	producer INT,
+	album INT default null,
 	category Category,
+	CONSTRAINT fk_artist 
+		FOREIGN KEY(artist) 
+			REFERENCES Artist(id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producer) 
-			REFERENCES Producer(id)
-);
+			REFERENCES Producer(id),
+	CONSTRAINT fk_album 
+		FOREIGN KEY(album) 
+			REFERENCES Album(id)
+    );
+    END;
+$function$;
 
-CREATE TABLE Album(
+CREATE OR REPLACE FUNCTION create_Album()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
 	releasedata DATE,
@@ -36,19 +72,16 @@ CREATE TABLE Album(
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
 			REFERENCES Artist(id)
-);
+    );
+    END;
+$function$;
 
-CREATE TABLE Song(
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(30),
-	producer INT,
-	category Category,
-	CONSTRAINT fk_producer 
-		FOREIGN KEY(producer) 
-			REFERENCES Producer(id)
-);
-
-CREATE TABLE Artist_Song(
+CREATE OR REPLACE FUNCTION create_Artist_Song()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Artist_Song(
 	artist INT,
 	song INT,
 	PRIMARY KEY(artist,song),
@@ -59,7 +92,17 @@ CREATE TABLE Artist_Song(
 		FOREIGN KEY(song) 
 			REFERENCES Song(id)
 );
-CREATE TABLE Users(
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION create_users()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    CREATE TABLE Users(
 	username VARCHAR(20),
 	pwd		 VARCHAR(20)
-)
+    );
+    END;
+$function$;

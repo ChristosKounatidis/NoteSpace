@@ -24,3 +24,4 @@ AS $function$
     insert into Song(name,producer,category) values ($1,$2,$3);
     END;
 $function$;
+
