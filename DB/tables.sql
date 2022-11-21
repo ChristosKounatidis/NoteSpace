@@ -17,6 +17,16 @@ CREATE TABLE Artist(
 	name VARCHAR(15)
 );
 
+CREATE TABLE Song(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(30),
+	producer INT,
+	category Category,
+	CONSTRAINT fk_producer 
+		FOREIGN KEY(producer) 
+			REFERENCES Producer(id)
+);
+
 CREATE TABLE Album(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
@@ -31,12 +41,8 @@ CREATE TABLE Album(
 CREATE TABLE Song(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	artist INT,
 	producer INT,
 	category Category,
-	CONSTRAINT fk_artist 
-		FOREIGN KEY(artist) 
-			REFERENCES Artist(id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producer) 
 			REFERENCES Producer(id)
