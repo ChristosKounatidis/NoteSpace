@@ -25,7 +25,10 @@ CREATE TABLE Album(
 	song INT,
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
-			REFERENCES Artist(id)
+			REFERENCES Artist(id),
+	CONSTRAINT fk_song 
+		FOREIGN KEY(song) 
+			REFERENCES Song(id)
 );
 
 CREATE TABLE Song(
