@@ -79,7 +79,7 @@ CREATE OR REPLACE FUNCTION albums()
 AS $function$
     BEGIN
     --year ,month ,day
-    perform new_Album('Spilled beans','1999-03-26',2);
+    perform new_Album('Spilled beans','1999-03-26',1);
     perform new_Album('Nine yards','2005-11-30',2);
     perform new_Album('Twice shy','2001-09-11',3);
     perform new_Album('Impulse reaction','1995-12-07',4);
@@ -110,3 +110,9 @@ AS $function$
     perform new_Song('The Same',1,1,null,'Country');
 	END;
 $function$;
+
+select artists();
+select producers();
+select albums();
+select songs();
+
