@@ -38,15 +38,6 @@ song VARCHAR(30);
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION new_Artist_Song(song_name int,producer_name int)
- RETURNS void
- LANGUAGE plpgsql
-AS $function$
-    BEGIN
-    insert into Artist_Song(artist,song) values ($1,$2);
-    END;
-$function$;
-
 CREATE OR REPLACE FUNCTION new_User(Username VARCHAR(20),pass VARCHAR(20))
  RETURNS void
  LANGUAGE plpgsql
