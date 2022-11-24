@@ -109,6 +109,9 @@ AS $function$
     select new_Song('The Same',1,1,null,'Country');
 $function$;
 
-
-
+select artists();
+select producers();
+select albums();
+select songs();
+select users();
 
