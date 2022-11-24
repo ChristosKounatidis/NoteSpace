@@ -15,7 +15,7 @@ AS $function$
     DROP TABLE if EXISTS Producer;
     CREATE TABLE Producer(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(15)
+	name VARCHAR(30)
     );
     END;
 $function$;
@@ -28,7 +28,7 @@ AS $function$
     DROP TABLE if EXISTS Artist;
     CREATE TABLE Artist(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(15)
+	name VARCHAR(30)
     );
     END;
 $function$;
