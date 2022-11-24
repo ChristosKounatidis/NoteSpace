@@ -110,9 +110,25 @@ AS $function$
     END;
 $function$;
 
+CREATE OR REPLACE FUNCTION create_log()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    BEGIN
+    DROP TABLE if EXISTS Log;
+    CREATE TABLE Log(
+	method enum('d','u','i'),
+	table_name	VARCHAR(20),
+	moment timestamp
+    );
+    END;
+$function$;
+
+
 SELECT create_Artist();
 SELECT create_Producers();
 SELECT create_Album();
 SELECT create_Song();
 SELECT create_users();
 SELECT create_Artist_Song();
+SELECT create_log();
