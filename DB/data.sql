@@ -78,11 +78,12 @@ CREATE OR REPLACE FUNCTION albums()
  LANGUAGE plpgsql
 AS $function$
     BEGIN
-    select new_Album(Spilled beans);
-    select new_Album(Nine yards);
-    select new_Album(Honesty);
-    select new_Album(Impulse reaction);
-    select new_Album(Ghost stories);
+    --year ,month ,day
+    select new_Album('Spilled beans','1999-03-26',1);
+    select new_Album('Nine yards','2005-11-31',2);
+    select new_Album('Twice shy','2001-09-11',3);
+    select new_Album('Impulse reaction','1995-17-07',4);
+    select new_Album('Ghost stories','2010-04-06',5);
     END;
 $function$;
 
@@ -90,22 +91,22 @@ CREATE OR REPLACE FUNCTION songs()
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
-    select new_Song('White Horse');
-    select new_Song('cheery wings');
-    select new_Song('Little Lion Man');
-    select new_Song('legendary YOUTH');
-    select new_Song('eez-eh');
-    select new_Song('All My Grenade');
-    select new_Song('Retro june');
-    select new_Song('teen Flashback');
-    select new_Song('easy Grenade');
-    select new_Song('rubber Kindness');
-    select new_Song('Burn queen');
-    select new_Song('Often Motion');
-    select new_Song('Alternative');
-    select new_Song('The Reason');
-    select new_Song('Happier Angel');
-    select new_Song('The Same');
+    select new_Song('White Horse',1,3,5,'Pop');
+    select new_Song('cheery wings',2,4,1,'Country');
+    select new_Song('Little Lion Man',3,2,1,'Rock');
+    select new_Song('legendary YOUTH',3,4,2,'Hiphop');
+    select new_Song('eez-eh',1,1,1,'Country');
+    select new_Song('All My Grenade',1,1,1,'Rock');
+    select new_Song('Retro june',1,1,1,'Hiphop');
+    select new_Song('teen Flashback',1,1,1,'Pop');
+    select new_Song('easy Grenade',1,1,1,'Country');
+    select new_Song('rubber Kindness',1,1,1,'Hiphop');
+    select new_Song('Burn queen',1,1,1,'Pop');
+    select new_Song('Often Motion',1,1,1,'Country');
+    select new_Song('Alternative',1,1,null,'Pop');
+    select new_Song('The Reason',1,1,null,'Rock');
+    select new_Song('Happier Angel',1,1,null,'Hiphop');
+    select new_Song('The Same',1,1,null,'Country');
 $function$;
 
 
