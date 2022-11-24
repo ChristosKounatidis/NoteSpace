@@ -1,10 +1,14 @@
-CREATE OR REPLACE FUNCTION checkuser(user VARCHAR(30),pass VARCHAR(30))
+CREATE OR REPLACE FUNCTION checkuser(un VARCHAR(30),pass VARCHAR(30))
  RETURNS Boolean
  LANGUAGE plpgsql
 AS $function$
+	DECLARE rs varchar(30) := '' ;
     BEGIN
-    select * from user where user=username and pass=pwd;
+    rs := (select username from users where un=username and pass=pwd);
+	IF rs != '' THEN 
+	RETURN TRUE;
+	ELSE
+	RETURN FALSE;
+	END IF;
     END;
 $function$;
-
-select checkuser('xristos','skata1');
