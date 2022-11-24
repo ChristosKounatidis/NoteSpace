@@ -4,13 +4,32 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class Connection {
-    Credentials login = new Credentials();
-    
+    static String username = "postgres";
+    static String passwd = "skata1";
     static String driverClassName = "org.postgresql.Driver" ;
-    static String url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/it174940" ;
+    static String url = "jdbc:postgresql://localhost:5432/postgres" ;
     static java.sql.Connection dbConnection = null;
-    String username = login.getUsername();
-    String passwd = login.getPasswd();
     static Statement  statement = null;
+    static ResultSet rs	= null;
+
+    public static void main (String[] argv) throws Exception{
+        Class.forName (driverClassName);
+        dbConnection = DriverManager.getConnection (url, username, passwd);
+        statement    = dbConnection.createStatement();
+        
+        String selectString = "select * from artist";
+        
+        rs = statement.executeQuery(selectString);
+        
+        while(rs.next()) {
+		int rating = rs.getInt("id");
+                String mage = rs.getString("name");
+		System.out.println( rating + "        " + mage );
+	}
+
+        statement.close();
+        
+        dbConnection.close();
+    }
 
 }
