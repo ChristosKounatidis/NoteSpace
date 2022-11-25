@@ -84,25 +84,23 @@ AS $function$
     END;
 $function$;
 
-CREATE or REPLACE FUNCTION logger() RETURNS trigger AS $$
-        BEGIN
-        IF TG_OP = 'DELETE'
-        THEN
-           INSERT INTO Log(method,old_data,new_data,table_name,moment)
-            VALUES ('d',(select old::text),'',TG_TABLE_NAME,now());
-            RETURN OLD;            
-        ELSIF TG_OP = 'INSERT'
-        THEN
-           INSERT INTO Log(method,old_data,new_data,table_name,moment)
-            VALUES ('i','',(select new::text),TG_TABLE_NAME,now());
-            RETURN NEW;
-        ELSIF  TG_OP = 'UPDATE'
-        THEN
-            INSERT INTO Log(method,old_data,new_data,table_name,moment)
-            VALUES ('u',(select old::text),(select new::text),TG_TABLE_NAME,now());
-            RETURN NEW;
-            END IF;
-        END;
+CREATE or REPLACE FUNCTION logger() 
+RETURNS trigger AS $$ 
+    BEGIN
+    IF TG_OP = 'DELETE' THEN
+        INSERT INTO Log(method,old_data,new_data,table_name,moment)
+        VALUES ('d',(select old::text),'',TG_TABLE_NAME,now());
+        RETURN OLD;            
+    ELSIF TG_OP = 'INSERT' THEN
+        INSERT INTO Log(method,old_data,new_data,table_name,moment)
+        VALUES ('i','',(select new::text),TG_TABLE_NAME,now());
+        RETURN NEW;
+    ELSIF  TG_OP = 'UPDATE' THEN
+        INSERT INTO Log(method,old_data,new_data,table_name,moment)
+        VALUES ('u',(select old::text),(select new::text),TG_TABLE_NAME,now());
+        RETURN NEW;
+    END IF;
+    END;
 $$ LANGUAGE 'plpgsql';
 
 
