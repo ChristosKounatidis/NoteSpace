@@ -5,7 +5,7 @@ AS $function$
     BEGIN
     DROP TABLE if EXISTS Log;
     CREATE TABLE Log(
-	method enum('d','u','i'),
+	method VARCHAR(1),
     old_data VARCHAR(100),
     new_data VARCHAR(100),
 	table_name	VARCHAR(10),
