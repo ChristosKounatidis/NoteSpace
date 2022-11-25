@@ -117,7 +117,7 @@ AS $function$
     BEGIN
     DROP TABLE if EXISTS Log;
     CREATE TABLE Log(
-	method enum('d','u','i'),
+	method VARCHAR(1),
 	table_name	VARCHAR(20),
 	moment timestamp
     );
