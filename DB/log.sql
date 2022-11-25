@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION create_log()
- RETURNS void
- LANGUAGE plpgsql
+RETURNS void
+LANGUAGE plpgsql
 AS $function$
     BEGIN
     DROP TABLE if EXISTS Log;
