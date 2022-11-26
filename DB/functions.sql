@@ -57,14 +57,18 @@ DECLARE
 search_key1 VARCHAR(40);
 search_key2 INT;
     BEGIN
+	--search by album name
 	IF Release_Date is NULL AND Artist_name is NULL THEN
 	search_key := CONCAT('%',Album_name,'%');
     RETURN QUERY SELECT DISTINCT a.name, a.releasedate,a.artist FROM album a WHERE a.name LIKE search_key;
+	--search by artist name
 	ELSIF  Album_name IS NULL AND Release_Date is NULL THEN
 	search_key2 := CONCAT('%',search_artist2(Artist_name),'%');
     RETURN QUERY SELECT DISTINCT a.name, a.releasedate ,a.artist FROM album a WHERE a.artist LIKE search_key2;
+	--search by date
 	ELSIF Album_name IS NULL AND Artist_name is NULL THEN
 	RETURN QUERY SELECT DISTINCT a.name, a.releasedate ,a.artist FROM album a WHERE a.releasedate = Release_Date; 
+
     END;
 $function$;
 
