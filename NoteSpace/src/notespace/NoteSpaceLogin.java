@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import static notespace.Connection.dbConnection;
 import static notespace.Connection.passwd;
 import static notespace.Connection.rs;
@@ -138,7 +139,9 @@ public class NoteSpaceLogin extends javax.swing.JFrame {
                 //NEA FORMA
                 Connection.statement.close();
                 Connection.dbConnection.close();
-                System.out.println("aaaaaaaaaaaaaaa");
+                dispose();
+                Managment managment = new Managment();
+                managment.setVisible(true);
             }
         } catch (Exception e){System.out.println(e);}      
     
