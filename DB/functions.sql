@@ -67,7 +67,7 @@ search_key2 INT;
     RETURN QUERY SELECT DISTINCT a.name, a.releasedate ,a.artist FROM album a WHERE a.artist LIKE search_key2;
 	--search by date
 	ELSIF Album_name IS NULL AND Artist_name is NULL THEN
-	RETURN QUERY SELECT DISTINCT a.name, a.releasedate ,a.artist FROM album a WHERE a.releasedate:: = Release_Date; 
+	RETURN QUERY SELECT DISTINCT a.name, a.releasedate ,a.artist FROM album a WHERE a.releasedate::date = Release_Date; 
 
     END;
 $function$;
