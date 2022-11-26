@@ -50,4 +50,30 @@ public class Connection {
         } catch (Exception e){System.out.println(e);}     
         return false;
     }
+    
+    public static String search(String para,int type){
+        try {
+            Class.forName (driverClassName);
+            dbConnection = DriverManager.getConnection (url, username, passwd);
+            statement    = dbConnection.createStatement();
+            String selectString = "";
+            switch(type){
+                case 1 -> {
+                    selectString = "select search_artist('"+para+"');";
+                }
+                case 2 -> {
+                    selectString = "select search_producer('"+para+"');";
+                }
+                case 3 -> {
+                    selectString = "select search_album('"+para+"');";
+                }
+                case 4 -> {
+                }
+            }
+            rs = statement.executeQuery(selectString);
+        } catch (Exception e){System.out.println(e);}
+        
+        
+        return "";
+    }
 }
