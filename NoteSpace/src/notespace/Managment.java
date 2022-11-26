@@ -60,7 +60,7 @@ public class Managment extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Τραγούδια", "Παραγωγοί", "Καλλιτέχνες", "Album" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Καλιτέχνες", "Παραγωγοί", "Album", "Τραγούδια" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
