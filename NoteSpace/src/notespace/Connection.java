@@ -60,9 +60,9 @@ public class Connection {
             rs = statement.executeQuery(selectString);
             String set = "";
             while(rs.next()) {
-                set = "search_artist";
+                return(rs.getString("search_artist"));
             }
-            return(rs.getString(set));
+            
         } catch (Exception e){System.out.println(e);}     
         return "";
     }
