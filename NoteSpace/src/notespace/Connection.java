@@ -15,14 +15,11 @@ public class Connection {
     static ResultSet rs	= null;
 
     public static void main (String[] argv) throws Exception{
-        Class.forName (driverClassName);
-        dbConnection = DriverManager.getConnection (url, username, passwd);
-        statement    = dbConnection.createStatement();
+        //Class.forName (driverClassName);
+        //dbConnection = DriverManager.getConnection (url, username, passwd);
+        //statement    = dbConnection.createStatement();
         
         //String selectString = "select * from artist"; //test query
-        
-        
-        
         
         //rs = statement.executeQuery(selectString);
         
@@ -33,8 +30,10 @@ public class Connection {
 		System.out.println( rating + "        " + mage );
 	}
         */
-        statement.close();
-        dbConnection.close();
+        //statement.close();
+        //dbConnection.close();
+        NoteSpaceLogin login = new NoteSpaceLogin();
+        login.setVisible(true);
     }
     public static boolean checkUser(String un, String password) throws Exception{
         try {
@@ -51,29 +50,20 @@ public class Connection {
         return false;
     }
     
-    public static String search(String para,int type){
+    public static String searchArtist(String keyword) throws Exception{
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
-            String selectString = "";
-            switch(type){
-                case 1 -> {
-                    selectString = "select search_artist('"+para+"');";
-                }
-                case 2 -> {
-                    selectString = "select search_producer('"+para+"');";
-                }
-                case 3 -> {
-                    selectString = "select search_album('"+para+"');";
-                }
-                case 4 -> {
-                }
-            }
+            
+            String selectString = "select search_artist('"+keyword+"');";
             rs = statement.executeQuery(selectString);
-        } catch (Exception e){System.out.println(e);}
-        
-        
+            String set = "";
+            while(rs.next()) {
+                set = "search_artist";
+            }
+            return(rs.getString(set));
+        } catch (Exception e){System.out.println(e);}     
         return "";
     }
 }
