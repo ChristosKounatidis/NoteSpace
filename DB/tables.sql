@@ -60,13 +60,9 @@ AS $function$
     CREATE TABLE Song(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(30),
-	artist INT,
 	producer INT,
 	album INT default null,
 	category Category,
-	CONSTRAINT fk_artist 
-		FOREIGN KEY(artist) 
-			REFERENCES Artist(id),
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producer) 
 			REFERENCES Producer(id),
@@ -110,20 +106,6 @@ AS $function$
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION create_log()
- RETURNS void
- LANGUAGE plpgsql
-AS $function$
-    BEGIN
-    DROP TABLE if EXISTS Log;
-    CREATE TABLE Log(
-	method VARCHAR(1),
-	table_name	VARCHAR(20),
-	moment timestamp
-    );
-    END;
-$function$;
-
 
 SELECT create_Artist();
 SELECT create_Producers();
@@ -131,4 +113,3 @@ SELECT create_Album();
 SELECT create_Song();
 SELECT create_users();
 SELECT create_Artist_Song();
-SELECT create_log();
