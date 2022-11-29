@@ -5,10 +5,14 @@
  */
 package notespace;
 
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BoxLayout;
+import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JLabel;
 
 /**
@@ -286,14 +290,36 @@ public class Managment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void artistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistBtnActionPerformed
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Ths manas sou1");
+        names.add("Ths manas sou2");
+        names.add("Ths manas sou3");
+        names.add("Ths manas sou4");
+        names.add("Ths manas sou5");
+        JLabel l = new JLabel();
+        String[] n = names.toArray(new String[0]);
+        artistPanel.setLayout(new FlowLayout());
         try {
-            JLabel l = new JLabel();
-            ArrayList<String> names = Connection.searchArtist(artistText.getText());
-            for (String name : names) {
-                l.setText(name);
+//            for (String name : names) {
+//                JLabel l = new JLabel(name.toString());
+//                l.setSize(150, 10);
+//                l.setText(name);
+//                l.setVisible(true);
+//                artistPanel.add(l);
+//                artistPanel.setVisible(true);
+//            }
+            for (int i = 0; i < n.length; i++) {
+                  l.setSize(150, 10);
+                  l.setText(n[i]);
+                  artistPanel.add(l);
+                  artistPanel.revalidate();
+                  artistPanel.repaint();
+                  artistPanel.setVisible(true);
             }
-            artistPanel.add(l);
+            artistPanel.revalidate();
+            artistPanel.repaint();
             artistPanel.setVisible(true);
+            //ArrayList<String> names = Connection.searchArtist(artistText.getText());
         } catch (Exception e){System.out.println(e);} 
     }//GEN-LAST:event_artistBtnActionPerformed
 
