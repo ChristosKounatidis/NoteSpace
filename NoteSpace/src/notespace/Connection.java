@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 
 public class Connection {
     static String username = "postgres";
@@ -50,7 +51,8 @@ public class Connection {
         return false;
     }
     
-    public static String searchArtist(String keyword) throws Exception{
+    public static ArrayList<String> searchArtist(String keyword) throws Exception{
+        ArrayList<String> names = new ArrayList<>();
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -58,12 +60,11 @@ public class Connection {
             
             String selectString = "select search_artist('"+keyword+"');";
             rs = statement.executeQuery(selectString);
-            String set = "";
             while(rs.next()) {
-                return(rs.getString("search_artist"));
+                names.add(rs.getString("search_artist"));
             }
-            
+            return names;
         } catch (Exception e){System.out.println(e);}     
-        return "";
+        return null;
     }
 }
