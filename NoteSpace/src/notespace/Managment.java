@@ -5,8 +5,11 @@
  */
 package notespace;
 
+import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Label;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -173,14 +176,13 @@ public class Managment extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(artLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(artistBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(artistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(artistText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)))
+                            .addComponent(artistText, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(artistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
@@ -301,10 +303,6 @@ public class Managment extends javax.swing.JFrame {
             names = Connection.searchArtist(artistText.getText());
         } catch (Exception e){System.out.println(e);} 
         
-        //Φτιάχνει το layout για να μπα´ινουν το ´ενα κατω απο το αλλο
-        BoxLayout layout = new BoxLayout(artistPanel,BoxLayout.Y_AXIS);
-        artistPanel.setLayout(layout);
-        
         //Γεμ´ιζει το JPanel με τα string
         for (int i = 0; i < names.size(); i++) {
             PanelFiller(artistPanel, names.get(i));
@@ -369,11 +367,14 @@ public class Managment extends javax.swing.JFrame {
     
     public void PanelFiller(JPanel p,String content)
     {
+        GridLayout layout = new GridLayout(0,3);
+        p.setLayout(layout);
+        
         JLabel label = new JLabel(content);
         label.setAlignmentX(LEFT_ALIGNMENT);;
         p.add(label);
         
-        JButton delete = new JButton("Delete"); //Koumpi DELETE dynamika
+        JButton delete = new JButton("Delete");//Koumpi DELETE dynamika
         delete.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -382,9 +383,19 @@ public class Managment extends javax.swing.JFrame {
             }
         } 
         );
+        //delete.setPreferredSize(new Dimension(10, 10));
         p.add(delete);
-        //p.setAlignmentX(delete.RIGHT_ALIGNMENT);
-        delete.setAlignmentX(p.RIGHT_ALIGNMENT);
+        
+        JButton edit = new JButton("Edit");//Koumpi EDIT dynamika
+        delete.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                artistBtnActionPerformed(evt);
+            }
+        } 
+        );
+        p.add(edit);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
