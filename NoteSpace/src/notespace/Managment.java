@@ -367,8 +367,9 @@ public class Managment extends javax.swing.JFrame {
     
     public void PanelFiller(JPanel p,String content)
     {
-        GridLayout layout = new GridLayout(0,3);
+        GridLayout layout = new GridLayout(0,3,10,10);
         p.setLayout(layout);
+        
         
         JLabel label = new JLabel(content);
         label.setAlignmentX(LEFT_ALIGNMENT);;
@@ -383,7 +384,6 @@ public class Managment extends javax.swing.JFrame {
             }
         } 
         );
-        //delete.setPreferredSize(new Dimension(10, 10));
         p.add(delete);
         
         JButton edit = new JButton("Edit");//Koumpi EDIT dynamika
