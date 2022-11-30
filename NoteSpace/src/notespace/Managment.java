@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -369,10 +370,10 @@ public class Managment extends javax.swing.JFrame {
     public void PanelFiller(JPanel p,String content)
     {
         JLabel label = new JLabel(content);
+        label.setAlignmentX(LEFT_ALIGNMENT);;
         p.add(label);
-        JButton delete = new JButton("Delete");
-        //JButton edit = new JButton("Edit");
-
+        
+        JButton delete = new JButton("Delete"); //Koumpi DELETE dynamika
         delete.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -381,7 +382,9 @@ public class Managment extends javax.swing.JFrame {
             }
         } 
         );
-        
+        p.add(delete);
+        //p.setAlignmentX(delete.RIGHT_ALIGNMENT);
+        delete.setAlignmentX(p.RIGHT_ALIGNMENT);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
