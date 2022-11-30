@@ -81,3 +81,13 @@ AS $function$
     END;
 $function$;
 
+CREATE OR REPLACE FUNCTION delete_artist(name VARCHAR(30))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE artist_id int;
+    BEGIN
+    artist_id:= select search_artist2(name);
+    delete from Artist where id = artist_id;
+    END;
+$function$;

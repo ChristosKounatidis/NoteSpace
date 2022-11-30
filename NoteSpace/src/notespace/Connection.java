@@ -45,7 +45,7 @@ public class Connection {
             String selectString = "select checkuser('"+un+"','"+password+"');";
             rs = statement.executeQuery(selectString);
             while(rs.next()) {
-		return(rs.getBoolean("checkuser"));
+		    return(rs.getBoolean("checkuser"));
             }
         } catch (Exception e){System.out.println(e);}     
         return false;
@@ -66,5 +66,18 @@ public class Connection {
             return names;
         } catch (Exception e){System.out.println(e);}     
         return null;
+    }
+    public static void deleteArtist(String keyword){
+        try {
+            Class.forName (driverClassName);
+            dbConnection = DriverManager.getConnection (url, username, passwd);
+            statement    = dbConnection.createStatement();
+            
+            String selectString = "select delete_artist('"+keyword+"');";
+            rs = statement.executeQuery(selectString);
+            while(rs.next()) {
+		    return(rs.getBoolean("checkuser"));
+            }
+        } catch (Exception e){System.out.println(e);}
     }
 }
