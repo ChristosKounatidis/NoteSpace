@@ -129,6 +129,7 @@ AS $function$
     BEGIN
     artist_id:= select search_artist2(name);
     delete from Artist where id = artist_id;
+    delete from Artist_Song where id = artist_id;
     END;
 $function$;
 
@@ -155,7 +156,7 @@ AS $function$
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION delete_album(name VARCHAR(30),T1 TABLE)
+CREATE OR REPLACE FUNCTION delete_album(name VARCHAR(30))
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
@@ -165,6 +166,40 @@ AS $function$
     delete from Album where id = album_id;
     END;
 $function$;
+
+CREATE OR REPLACE FUNCTION delete(name VARCHAR(30),Tname VARCHAR(15))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE item_id int;
+    BEGIN
+    IF Tname = 'Artist' THEN
+
+    item_id:= select search_artist2(name);
+    delete from Artist where id = item_id;
+    delete from Artist_Song where id = item_id;
+
+    ELSIF Tname = 'Song' THEN
+
+    item_id:= select search_Song2(name);
+    delete from Song where id = item_id;
+    delete from Artist_Song where id = item_id;
+
+    ELSIF Tname = 'Producer' THEN
+
+    item_id:= select search_producer2(name);
+    delete from Producer where id = item_id;
+
+    ELSIF Tname = 'Album' THEN
+
+    item_id:= select search_producer2(name);
+    delete from Producer where id = item_id;
+    
+    END IF;
+    END;
+$function$;
+
+
 
 
 -----------------------------------------------------------------------------------------------
