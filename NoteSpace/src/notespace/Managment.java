@@ -389,7 +389,11 @@ public class Managment extends javax.swing.JFrame {
             }
         });
     }
-
+    public void PanelFiller(JPanel p,String content)
+    {
+        JLabel label = new JLabel(content);
+        p.add(label);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel albLabel;
     private javax.swing.JButton albumBtn;
