@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
-import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JLabel;
 
 /**
@@ -291,31 +290,48 @@ public class Managment extends javax.swing.JFrame {
 
     private void artistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistBtnActionPerformed
         ArrayList<String> names = new ArrayList<>();
+        ArrayList<JLabel> labels = new ArrayList<>();
+
         names.add("Ths manas sou1");
         names.add("Ths manas sou2");
         names.add("Ths manas sou3");
         names.add("Ths manas sou4");
         names.add("Ths manas sou5");
-        JLabel l = new JLabel();
-        String[] n = names.toArray(new String[0]);
-        artistPanel.setLayout(new FlowLayout());
+        JLabel L1 = new JLabel();
+        JLabel L2 = new JLabel();
+        JLabel L3 = new JLabel();
+        JLabel L4 = new JLabel();
+        JLabel L5 = new JLabel();
+        
+        
+//        String[] n = names.toArray(new String[0]);
+        BoxLayout layout = new BoxLayout(artistPanel,BoxLayout.Y_AXIS);
+        artistPanel.setLayout(layout);
+        
         try {
 //            for (String name : names) {
-//                JLabel l = new JLabel(name.toString());
 //                l.setSize(150, 10);
 //                l.setText(name);
 //                l.setVisible(true);
-//                artistPanel.add(l);
-//                artistPanel.setVisible(true);
+//                labels.add(l);
 //            }
-            for (int i = 0; i < n.length; i++) {
-                  l.setSize(150, 10);
-                  l.setText(n[i]);
-                  artistPanel.add(l);
-                  artistPanel.revalidate();
-                  artistPanel.repaint();
-                  artistPanel.setVisible(true);
-            }
+              L1.setText(names.get(1));
+           
+              L2.setText(names.get(2));
+              artistPanel.add(L1);
+              artistPanel.add(L2);
+//            for (int i = 0; i < n.length; i++) {
+//                  l.setSize(150, 10);
+//                  l.setText(n[i]);
+//                  artistPanel.add(l);
+//                  artistPanel.revalidate();
+//                  artistPanel.repaint();
+//                  artistPanel.setVisible(true);
+//            
+//            for (JLabel label : labels) {
+//                artistPanel.add(label);
+//            }
+            
             artistPanel.revalidate();
             artistPanel.repaint();
             artistPanel.setVisible(true);
