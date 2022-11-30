@@ -370,6 +370,18 @@ public class Managment extends javax.swing.JFrame {
     {
         JLabel label = new JLabel(content);
         p.add(label);
+        JButton delete = new JButton("Delete");
+        //JButton edit = new JButton("Edit");
+
+        delete.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                artistBtnActionPerformed(evt);
+            }
+        } 
+        );
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
