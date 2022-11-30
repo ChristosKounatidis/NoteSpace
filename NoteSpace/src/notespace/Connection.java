@@ -33,7 +33,7 @@ public class Connection {
         */
         //statement.close();
         //dbConnection.close();
-        NoteSpaceLogin login = new NoteSpaceLogin();
+        Managment login = new Managment();
         login.setVisible(true);
     }
     public static boolean checkUser(String un, String password) throws Exception{

@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -289,54 +290,26 @@ public class Managment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void artistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistBtnActionPerformed
-        ArrayList<String> names = new ArrayList<>();
-        ArrayList<JLabel> labels = new ArrayList<>();
+        if(artistPanel.getSize()!=null){
+            artistPanel.removeAll();
+        }
+        ArrayList<String> names = null;
+        try {
+            names = Connection.searchArtist(artistText.getText());
+        } catch (Exception e){System.out.println(e);} 
+        
 
-        names.add("Ths manas sou1");
-        names.add("Ths manas sou2");
-        names.add("Ths manas sou3");
-        names.add("Ths manas sou4");
-        names.add("Ths manas sou5");
-        JLabel L1 = new JLabel();
-        JLabel L2 = new JLabel();
-        JLabel L3 = new JLabel();
-        JLabel L4 = new JLabel();
-        JLabel L5 = new JLabel();
-        
-        
-//        String[] n = names.toArray(new String[0]);
         BoxLayout layout = new BoxLayout(artistPanel,BoxLayout.Y_AXIS);
         artistPanel.setLayout(layout);
         
-        try {
-//            for (String name : names) {
-//                l.setSize(150, 10);
-//                l.setText(name);
-//                l.setVisible(true);
-//                labels.add(l);
-//            }
-              L1.setText(names.get(1));
-           
-              L2.setText(names.get(2));
-              artistPanel.add(L1);
-              artistPanel.add(L2);
-//            for (int i = 0; i < n.length; i++) {
-//                  l.setSize(150, 10);
-//                  l.setText(n[i]);
-//                  artistPanel.add(l);
-//                  artistPanel.revalidate();
-//                  artistPanel.repaint();
-//                  artistPanel.setVisible(true);
-//            
-//            for (JLabel label : labels) {
-//                artistPanel.add(label);
-//            }
-            
-            artistPanel.revalidate();
-            artistPanel.repaint();
-            artistPanel.setVisible(true);
-            //ArrayList<String> names = Connection.searchArtist(artistText.getText());
-        } catch (Exception e){System.out.println(e);} 
+        for (int i = 0; i < names.size(); i++) {
+            PanelFiller(artistPanel, names.get(i));
+        }
+        
+        artistPanel.revalidate();
+        artistPanel.repaint();
+        artistPanel.setVisible(true);
+        
     }//GEN-LAST:event_artistBtnActionPerformed
 
     private void producerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producerBtnActionPerformed
@@ -389,11 +362,13 @@ public class Managment extends javax.swing.JFrame {
             }
         });
     }
+    
     public void PanelFiller(JPanel p,String content)
     {
         JLabel label = new JLabel(content);
         p.add(label);
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel albLabel;
     private javax.swing.JButton albumBtn;
