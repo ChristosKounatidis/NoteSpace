@@ -70,7 +70,7 @@ AS $function$
     END;
 $function$;
 -----------------------------------------------------------------------------------------------------
-
+--search_x2 ,functions only to used in other functions
 CREATE OR REPLACE FUNCTION search_artist2(artist_name VARCHAR(30))
  RETURNS TABLE (id int)
  LANGUAGE plpgsql
