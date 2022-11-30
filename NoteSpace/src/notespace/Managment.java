@@ -290,18 +290,21 @@ public class Managment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void artistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistBtnActionPerformed
+        //Αν το JPanel έχει περιεχομενο το αδειάζει
         if(artistPanel.getSize()!=null){
             artistPanel.removeAll();
         }
         ArrayList<String> names = null;
         try {
+            //Πέρνει περιεχ´ομενα απο την sql
             names = Connection.searchArtist(artistText.getText());
         } catch (Exception e){System.out.println(e);} 
         
-
+        //Φτιάχνει το layout για να μπα´ινουν το ´ενα κατω απο το αλλο
         BoxLayout layout = new BoxLayout(artistPanel,BoxLayout.Y_AXIS);
         artistPanel.setLayout(layout);
         
+        //Γεμ´ιζει το JPanel με τα string
         for (int i = 0; i < names.size(); i++) {
             PanelFiller(artistPanel, names.get(i));
         }
