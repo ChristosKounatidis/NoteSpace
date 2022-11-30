@@ -5,16 +5,14 @@
  */
 package notespace;
 
-import java.awt.CardLayout;
+
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -343,12 +341,20 @@ public class Managment extends javax.swing.JFrame {
     
     public void PanelFiller(JPanel p,String content)
     {
-        GridLayout layout = new GridLayout(0,3,5,5);
-        p.setLayout(layout);
+        JPanel row = new JPanel();
+        
+        BoxLayout layout1 = new BoxLayout(p, Y_AXIS);
+        GridLayout layout2 = new GridLayout(0,3,5,5);
+        p.setLayout(layout1);
+        row.setLayout(layout2);
+        System.out.println(p.getComponentCount());
+        p.setPreferredSize(new Dimension(0, (p.getComponentCount()+1)*30)); //FTOIAXNEI TO SIZE DYNAMIKA GT TO GRIDLAYOUT EINAI GTP
         
         JLabel label = new JLabel(content);
-        label.setAlignmentX(LEFT_ALIGNMENT);;
-        p.add(label);
+        label.setAlignmentX(LEFT_ALIGNMENT);
+        label.setBackground(Color.lightGray);
+        label.setOpaque(true);
+        row.add(label);
         
         JButton delete = new JButton("Delete");//Koumpi DELETE dynamika
         delete.addActionListener(new java.awt.event.ActionListener()
@@ -359,7 +365,6 @@ public class Managment extends javax.swing.JFrame {
             }
         } 
         );
-        p.add(delete);
         
         JButton edit = new JButton("Edit");//Koumpi EDIT dynamika
         delete.addActionListener(new java.awt.event.ActionListener()
@@ -370,7 +375,11 @@ public class Managment extends javax.swing.JFrame {
             }
         } 
         );
-        p.add(edit);
+        row.add(delete);
+        delete.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+        row.add(edit);
+        edit.setBorder(BorderFactory.createLineBorder(Color.green, 2));
+        p.add(row);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
