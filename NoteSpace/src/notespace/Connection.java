@@ -76,7 +76,7 @@ public class Connection {
             String selectString = "select delete_artist('"+keyword+"');";
             rs = statement.executeQuery(selectString);
             while(rs.next()) {
-		    return(rs.getBoolean("checkuser"));
+		//return(rs.getBoolean("checkuser"));
             }
         } catch (Exception e){System.out.println(e);}
     }
