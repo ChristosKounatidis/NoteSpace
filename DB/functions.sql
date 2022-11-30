@@ -27,17 +27,6 @@ DECLARE search_key VARCHAR(40);
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION search_artist2(artist_name VARCHAR(30))
- RETURNS TABLE (id int)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',artist_name,'%');
-    RETURN QUERY SELECT DISTINCT a.id FROM Artist a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
 CREATE OR REPLACE FUNCTION search_producer(producer_name VARCHAR(30))
  RETURNS TABLE (name varchar)
  LANGUAGE plpgsql
@@ -80,6 +69,57 @@ AS $function$
     
     END;
 $function$;
+-----------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION search_artist2(artist_name VARCHAR(30))
+ RETURNS TABLE (id int)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',artist_name,'%');
+    RETURN QUERY SELECT DISTINCT a.id FROM Artist a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION search_album2(album_name VARCHAR(30))
+ RETURNS TABLE (id int)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',album_name,'%');
+    RETURN QUERY SELECT DISTINCT a.id FROM Album a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION search_producer2(producer_name VARCHAR(30))
+ RETURNS TABLE (id int)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',producer_name,'%');
+    RETURN QUERY SELECT DISTINCT a.id FROM Producer a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION search_song2(song_name VARCHAR(30))
+ RETURNS TABLE (id int)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',song_name,'%');
+    RETURN QUERY SELECT DISTINCT a.id FROM Song a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+
 
 CREATE OR REPLACE FUNCTION delete_artist(name VARCHAR(30))
  RETURNS void
@@ -89,5 +129,53 @@ AS $function$
     BEGIN
     artist_id:= select search_artist2(name);
     delete from Artist where id = artist_id;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION delete_producer(name VARCHAR(30))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE producer_id int;
+    BEGIN
+    producer_id:= select search_producer2(name);
+    delete from Producer where id = producer_id;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION delete_song(name VARCHAR(30))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE song_id int;
+    BEGIN
+    song_id:= select search_song2(name);
+    delete from Song where id = song_id;
+    delete from Artist_Song where id = song_id;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION delete_album(name VARCHAR(30),T1 TABLE)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE artist_id int;
+    BEGIN
+    ablum_id:= select search_album2(name);
+    delete from Album where id = album_id;
+    END;
+$function$;
+
+
+-----------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION delete_album(name VARCHAR(30),T1 TABLE)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE artist_id int;
+    BEGIN
+    ablum_id:= select search_album2(name);
+    delete from Album where id = album_id;
     END;
 $function$;
