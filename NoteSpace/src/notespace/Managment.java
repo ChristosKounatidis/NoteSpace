@@ -9,6 +9,7 @@ package notespace;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -45,8 +46,8 @@ public class Managment extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         artistPanel = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        producerPanel = new javax.swing.JPanel();
+        albumPanel = new javax.swing.JPanel();
         artLabel = new javax.swing.JLabel();
         prodLabel = new javax.swing.JLabel();
         producerBtn = new javax.swing.JButton();
@@ -55,7 +56,7 @@ public class Managment extends javax.swing.JFrame {
         albumBtn = new javax.swing.JButton();
         albumText = new javax.swing.JTextField();
         producerText = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        songPanel = new javax.swing.JPanel();
         songText = new javax.swing.JTextField();
         songLabel = new javax.swing.JLabel();
         songBtn = new javax.swing.JButton();
@@ -100,31 +101,31 @@ public class Managment extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel4.setAutoscrolls(true);
-        jPanel4.setPreferredSize(new java.awt.Dimension(300, 500));
+        producerPanel.setAutoscrolls(true);
+        producerPanel.setPreferredSize(new java.awt.Dimension(300, 500));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout producerPanelLayout = new javax.swing.GroupLayout(producerPanel);
+        producerPanel.setLayout(producerPanelLayout);
+        producerPanelLayout.setHorizontalGroup(
+            producerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        producerPanelLayout.setVerticalGroup(
+            producerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel5.setAutoscrolls(true);
-        jPanel5.setPreferredSize(new java.awt.Dimension(300, 500));
+        albumPanel.setAutoscrolls(true);
+        albumPanel.setPreferredSize(new java.awt.Dimension(300, 500));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout albumPanelLayout = new javax.swing.GroupLayout(albumPanel);
+        albumPanel.setLayout(albumPanelLayout);
+        albumPanelLayout.setHorizontalGroup(
+            albumPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        albumPanelLayout.setVerticalGroup(
+            albumPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
@@ -133,6 +134,11 @@ public class Managment extends javax.swing.JFrame {
         prodLabel.setText("Παραγωγοί");
 
         producerBtn.setText("Αναζήτηση");
+        producerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                producerBtnMouseClicked(evt);
+            }
+        });
         producerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 producerBtnActionPerformed(evt);
@@ -148,17 +154,17 @@ public class Managment extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setAutoscrolls(true);
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 500));
+        songPanel.setAutoscrolls(true);
+        songPanel.setPreferredSize(new java.awt.Dimension(300, 500));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout songPanelLayout = new javax.swing.GroupLayout(songPanel);
+        songPanel.setLayout(songPanelLayout);
+        songPanelLayout.setHorizontalGroup(
+            songPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        songPanelLayout.setVerticalGroup(
+            songPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
@@ -196,7 +202,7 @@ public class Managment extends javax.swing.JFrame {
                             .addComponent(producerText, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(15, 15, 15)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(producerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -204,10 +210,10 @@ public class Managment extends javax.swing.JFrame {
                         .addGap(99, 99, 99)
                         .addComponent(albumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(albumText)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(albumPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(songPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(songLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(116, 116, 116)
@@ -260,10 +266,10 @@ public class Managment extends javax.swing.JFrame {
                             .addComponent(songText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(songPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(producerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(artistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(albumPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -289,11 +295,27 @@ public class Managment extends javax.swing.JFrame {
         artistPanel.revalidate();
         artistPanel.repaint();
         artistPanel.setVisible(true);
-        
     }//GEN-LAST:event_artistBtnActionPerformed
 
     private void producerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producerBtnActionPerformed
-        // TODO add your handling code here:
+        //Αν το JPanel έχει περιεχομενο το αδειάζει
+        if(producerPanel.getSize()!=null){
+            producerPanel.removeAll();
+        }
+        ArrayList<String> names = null;
+        try {
+            //Πέρνει περιεχ´ομενα απο την sql
+            names = Connection.searchArtist(producerText.getText());
+        } catch (Exception e){System.out.println(e);} 
+        
+        //Γεμ´ιζει το JPanel με τα string
+        for (int i = 0; i < names.size(); i++) {
+            PanelFiller(producerPanel, names.get(i));
+        }
+        
+        producerPanel.revalidate();
+        producerPanel.repaint();
+        producerPanel.setVisible(true);
     }//GEN-LAST:event_producerBtnActionPerformed
 
     private void albumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_albumBtnActionPerformed
@@ -303,6 +325,10 @@ public class Managment extends javax.swing.JFrame {
     private void songBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_songBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_songBtnActionPerformed
+
+    private void producerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producerBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_producerBtnMouseClicked
     
     /**
      * @param args the command line arguments
@@ -342,13 +368,11 @@ public class Managment extends javax.swing.JFrame {
     public void PanelFiller(JPanel p,String content)
     {
         JPanel row = new JPanel();
-        
         BoxLayout layout1 = new BoxLayout(p, Y_AXIS);
         GridLayout layout2 = new GridLayout(0,3,5,5);
         p.setLayout(layout1);
         row.setLayout(layout2);
-        System.out.println(p.getComponentCount());
-        p.setPreferredSize(new Dimension(0, (p.getComponentCount()+1)*30)); //FTOIAXNEI TO SIZE DYNAMIKA GT TO GRIDLAYOUT EINAI GTP
+        p.setPreferredSize(new Dimension(0, (p.getComponentCount()+1)*30)); //FTOIAXNEI TO SIZE DYNAMIKA GT TO GRIDLAYOUT ...
         
         JLabel label = new JLabel(content);
         label.setAlignmentX(LEFT_ALIGNMENT);
@@ -361,30 +385,46 @@ public class Managment extends javax.swing.JFrame {
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                artistBtnActionPerformed(evt);
+                deleteBtnActionPerformed(evt);
+            }
+
+            private void deleteBtnActionPerformed(ActionEvent evt) {
+                System.out.println(1111);
             }
         } 
         );
         
         JButton edit = new JButton("Edit");//Koumpi EDIT dynamika
-        delete.addActionListener(new java.awt.event.ActionListener()
+        edit.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                artistBtnActionPerformed(evt);
+                editBtnActionPerformed(evt);
+            }
+
+            private void editBtnActionPerformed(ActionEvent evt) {
+                System.out.println(2222);
             }
         } 
         );
+        
         row.add(delete);
         delete.setBorder(BorderFactory.createLineBorder(Color.red, 2));
         row.add(edit);
         edit.setBorder(BorderFactory.createLineBorder(Color.green, 2));
         p.add(row);
+                
+        
     }
+    
+    
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel albLabel;
     private javax.swing.JButton albumBtn;
+    private javax.swing.JPanel albumPanel;
     private javax.swing.JTextField albumText;
     private javax.swing.JLabel artLabel;
     private javax.swing.JButton artistBtn;
@@ -394,14 +434,13 @@ public class Managment extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel prodLabel;
     private javax.swing.JButton producerBtn;
+    private javax.swing.JPanel producerPanel;
     private javax.swing.JTextField producerText;
     private javax.swing.JButton songBtn;
     private javax.swing.JLabel songLabel;
+    private javax.swing.JPanel songPanel;
     private javax.swing.JTextField songText;
     // End of variables declaration//GEN-END:variables
 }

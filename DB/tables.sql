@@ -46,7 +46,7 @@ AS $function$
 	artist INT,
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
-			REFERENCES Artist(id)
+			REFERENCES Artist(id) ON DELETE CASCADE
     );
     END;
 $function$;
@@ -65,10 +65,10 @@ AS $function$
 	category Category,
 	CONSTRAINT fk_producer 
 		FOREIGN KEY(producer) 
-			REFERENCES Producer(id),
+			REFERENCES Producer(id) ON DELETE CASCADE,
 	CONSTRAINT fk_album 
 		FOREIGN KEY(album) 
-			REFERENCES Album(id)
+			REFERENCES Album(id) ON DELETE CASCADE
     );
     END;
 $function$;
@@ -85,10 +85,10 @@ AS $function$
 	PRIMARY KEY(artist,song),
 	CONSTRAINT fk_artist 
 		FOREIGN KEY(artist) 
-			REFERENCES Artist(id),
+			REFERENCES Artist(id) ON DELETE CASCADE,
 	CONSTRAINT fk_song 
 		FOREIGN KEY(song) 
-			REFERENCES Song(id)
+			REFERENCES Song(id) ON DELETE CASCADE
 );
     END;
 $function$;
