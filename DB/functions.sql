@@ -85,6 +85,35 @@ DECLARE search_key VARCHAR(40);
     END;
 $function$;
 
+CREATE OR REPLACE FUNCTION search_item(item_name VARCHAR(30),Tname VARCHAR(30))
+ RETURNS TABLE (id int)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',item_name,'%');
+    
+    IF Tname = 'Artist' THEN
+
+    RETURN QUERY SELECT DISTINCT a.id FROM Artist a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Song' THEN
+
+    RETURN QUERY SELECT DISTINCT a.id FROM Song a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Producer' THEN
+	
+    RETURN QUERY SELECT DISTINCT a.id FROM Producer a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Album' THEN
+
+    RETURN QUERY SELECT DISTINCT a.id FROM Album a WHERE a.name LIKE search_key;
+
+    END IF;
+
+    END;
+$function$;
+
 -----------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION delete(name VARCHAR(30),Tname VARCHAR(15))
@@ -93,26 +122,27 @@ CREATE OR REPLACE FUNCTION delete(name VARCHAR(30),Tname VARCHAR(15))
 AS $function$
     DECLARE item_id int;
     BEGIN
+
     IF Tname = 'Artist' THEN
 
-    item_id:= (select search_artist2(name));
+    item_id:= (select search_item(name,Tname));
     delete from Artist_Song where artist = item_id;
 	delete from Artist where id = item_id;
 
     ELSIF Tname = 'Song' THEN
 
-    item_id:= (select search_Song2(name));
+    item_id:= (select search_item(name,Tname));
     delete from Artist_Song where song = item_id;
 	delete from Song where id = item_id;
 
     ELSIF Tname = 'Producer' THEN
 	
-    item_id:= (select search_producer2(name));
+    item_id:= (select search_item(name,Tname));
     delete from Producer where id = item_id;
 
     ELSIF Tname = 'Album' THEN
 
-    item_id:= (select search_producer2(name));
+    item_id:= (select search_item(name,Tname));
     delete from Producer where id = item_id;
     
     END IF;
