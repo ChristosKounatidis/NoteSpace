@@ -103,7 +103,8 @@ DECLARE search_key VARCHAR(40);
 $function$;
 
 -----------------------------------------------------------------------------------------------------
---search_x2 ,functions only to used in other functions
+--search_item  ,functions only to used in other functions
+-- returns ids based on string 
 CREATE OR REPLACE FUNCTION search_item(item_name VARCHAR(30),Tname VARCHAR(30))
  RETURNS TABLE (id int)
  LANGUAGE plpgsql
