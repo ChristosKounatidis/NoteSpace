@@ -80,13 +80,6 @@ public class Connection {
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
             
-            if(table==Managment.getPanel)
-            {
-                System.out.println("This panelis artist")
-            }
-
-
-
             String selectString = "select delete_artist('"+keyword+"','"+table+"');";
             rs = statement.executeQuery(selectString);
             
