@@ -38,6 +38,70 @@ DECLARE search_key VARCHAR(40);
     END;
 $function$;
 
+CREATE OR REPLACE FUNCTION search_album(album_name VARCHAR(30),song_name VARCHAR(30),artist_name VARCHAR(30))
+ RETURNS TABLE (name varchar)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE 
+    search_key1 VARCHAR(40);
+    search_key2 VARCHAR(40);
+    search_key3 VARCHAR(40);
+    
+    BEGIN
+    --only album
+    IF song_name is null and artist_name is null THEN
+    search_key1 := CONCAT('%',album_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name FROM Album a WHERE a.name LIKE search_key1;
+    --only song
+    ELSIF producer_name is null and artist_name is null THEN
+	search_key1 := CONCAT('%',song_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name 
+                 FROM Album a 
+                 WHERE a.id 
+                 IN (select album from song s where s.name LIKE search_key1);
+    --only artist
+    ELSIF producer_name is null and song_name is null THEN
+    search_key1 := CONCAT('%',song_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name 
+                 FROM Album a 
+                 WHERE a.id 
+                 IN (select album from artist s where s.name LIKE search_key1);
+    --album and song
+    ELSIF artist_name is null THEN
+    search_key1 := CONCAT('%',album_name,'%');
+    search_key2 := CONCAT('%',song_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name 
+                 FROM Album a 
+                 WHERE a.name LIKE search_key1 
+                 and a.id IN (select album from song s where s.name LIKE search_key2);
+    --song and artist
+    ELSIF artist_name is null THEN
+    search_key1 := CONCAT('%',song_name,'%');
+    search_key2 := CONCAT('%',artist_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name 
+                 FROM Album a 
+                 WHERE a.id IN (select album from song s where s.name LIKE search_key1);
+                 and   a.id IN (select id from album s where s.artist LIKE search_key2);
+                 and   EXISTS IN(select )
+
+
+
+	search_key := CONCAT('%',producer_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name FROM producer a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
+CREATE OR REPLACE FUNCTION search_producer(producer_name VARCHAR(30))
+ RETURNS TABLE (name varchar)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',producer_name,'%');
+    RETURN QUERY SELECT DISTINCT a.name FROM producer a WHERE a.name LIKE search_key;
+    END;
+$function$;
+
 -----------------------------------------------------------------------------------------------------
 --search_x2 ,functions only to used in other functions
 
