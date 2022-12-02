@@ -137,8 +137,6 @@ public class NoteSpaceLogin extends javax.swing.JFrame {
         try {
             if(Connection.checkUser(user.getText(), pass.getText())){
                 //NEA FORMA
-                Connection.statement.close();
-                Connection.dbConnection.close();
                 dispose();
                 Managment managment = new Managment();
                 managment.setVisible(true);

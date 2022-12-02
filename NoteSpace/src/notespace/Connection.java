@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 public class Connection {
     static String username = "postgres";
@@ -37,6 +38,7 @@ public class Connection {
         login.setVisible(true);
     }
     public static boolean checkUser(String un, String password) throws Exception{
+        boolean userexist = false;
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -45,39 +47,44 @@ public class Connection {
             String selectString = "select checkuser('"+un+"','"+password+"');";
             rs = statement.executeQuery(selectString);
             while(rs.next()) {
-		    return(rs.getBoolean("checkuser"));
+                    userexist = rs.getBoolean("checkuser");
+                    Connection.statement.close();
+                    Connection.dbConnection.close();
+		    return(userexist);
             }
         } catch (Exception e){System.out.println(e);}     
         return false;
     }
     
-    public static ArrayList<String> searchArtist(String keyword) throws Exception{
+    public static ArrayList<String> search(String keyword, String table) throws Exception{
         ArrayList<String> names = new ArrayList<>();
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
             
-            String selectString = "select search_artist('"+keyword+"');";
+            String selectString = "select search('"+keyword+"','"+table+"');";
             rs = statement.executeQuery(selectString);
             while(rs.next()) {
-                names.add(rs.getString("search_artist"));
+                names.add(rs.getString("search"));
             }
+            Connection.statement.close();
+            Connection.dbConnection.close();
             return names;
         } catch (Exception e){System.out.println(e);}     
         return null;
     }
-    public static void deleteArtist(String keyword){
+    public static void delete(String keyword, JPanel table){
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
             
-            String selectString = "select delete_artist('"+keyword+"');";
+            String selectString = "select delete_artist('"+keyword+"','"+table+"');";
             rs = statement.executeQuery(selectString);
-            while(rs.next()) {
-		//return(rs.getBoolean("checkuser"));
-            }
+            
+            Connection.statement.close();
+            Connection.dbConnection.close();
         } catch (Exception e){System.out.println(e);}
     }
 }

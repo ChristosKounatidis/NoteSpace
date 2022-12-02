@@ -5,7 +5,6 @@
  */
 package notespace;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -289,7 +288,7 @@ public class Managment extends javax.swing.JFrame {
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
-            names = Connection.searchArtist(artistText.getText());
+            names = Connection.search(songText.getText(),"Artist");
         } catch (Exception e){System.out.println(e);} 
         
         //Γεμ´ιζει το JPanel με τα string
@@ -310,7 +309,7 @@ public class Managment extends javax.swing.JFrame {
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
-            names = Connection.searchArtist(producerText.getText());
+            names = Connection.search(songText.getText(),"Producer");
         } catch (Exception e){System.out.println(e);} 
         
         //Γεμ´ιζει το JPanel με τα string
@@ -331,7 +330,7 @@ public class Managment extends javax.swing.JFrame {
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
-            names = Connection.searchArtist(albumText.getText());
+            names = Connection.search(songText.getText(),"Album");
         } catch (Exception e){System.out.println(e);} 
         
         //Γεμ´ιζει το JPanel με τα string
@@ -345,11 +344,28 @@ public class Managment extends javax.swing.JFrame {
     }//GEN-LAST:event_albumBtnActionPerformed
 
     private void songBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_songBtnActionPerformed
-        // TODO add your handling code here:
+        //Αν το JPanel έχει περιεχομενο το αδειάζει
+        if(songPanel.getSize()!=null){
+            songPanel.removeAll();
+        }
+        ArrayList<String> names = null;
+        try {
+            //Πέρνει περιεχ´ομενα απο την sql
+            names = Connection.search(songText.getText(),"Song");
+        } catch (Exception e){System.out.println(e);} 
+        
+        //Γεμ´ιζει το JPanel με τα string
+        for (int i = 0; i < names.size(); i++) {
+            PanelFiller(songPanel, names.get(i));
+        }
+        
+        songPanel.revalidate();
+        songPanel.repaint();
+        songPanel.setVisible(true);
     }//GEN-LAST:event_songBtnActionPerformed
 
     private void producerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producerBtnMouseClicked
-        // TODO add your handling code here:
+        // AKYROO
     }//GEN-LAST:event_producerBtnMouseClicked
     
     /**
@@ -411,7 +427,8 @@ public class Managment extends javax.swing.JFrame {
             }
 
             private void deleteBtnActionPerformed(ActionEvent evt) {
-                System.out.println(1111);
+                //Connection.delete(content, p);
+                System.out.println();
             }
         } 
         );
@@ -435,13 +452,8 @@ public class Managment extends javax.swing.JFrame {
         row.add(edit);
         edit.setBorder(BorderFactory.createLineBorder(Color.green, 2));
         p.add(row);
-                
         
     }
-    
-    
-    
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel albLabel;
