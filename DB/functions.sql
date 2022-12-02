@@ -16,28 +16,6 @@ $function$;
 ----------------------------------------------------------
 --search functions for data
 
-CREATE OR REPLACE FUNCTION search_artist(artist_name VARCHAR(30))
- RETURNS TABLE (name varchar)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',artist_name,'%');
-    RETURN QUERY SELECT DISTINCT a.name FROM Artist a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
-CREATE OR REPLACE FUNCTION search_producer(producer_name VARCHAR(30))
- RETURNS TABLE (name varchar)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',producer_name,'%');
-    RETURN QUERY SELECT DISTINCT a.name FROM producer a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
 CREATE OR REPLACE FUNCTION search_album(album_name VARCHAR(30),song_name VARCHAR(30),artist_name VARCHAR(30))
  RETURNS TABLE (name varchar)
  LANGUAGE plpgsql
@@ -91,20 +69,9 @@ DECLARE
     END;
 $function$;
 
-CREATE OR REPLACE FUNCTION search_producer(producer_name VARCHAR(30))
- RETURNS TABLE (name varchar)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',producer_name,'%');
-    RETURN QUERY SELECT DISTINCT a.name FROM producer a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
 -----------------------------------------------------------------------------------------------------
---search_item  ,functions only to used in other functions
--- returns ids based on string 
+--search_x2 ,functions only to used in other functions
+
 CREATE OR REPLACE FUNCTION search_item(item_name VARCHAR(30),Tname VARCHAR(30))
  RETURNS TABLE (id int)
  LANGUAGE plpgsql
@@ -128,6 +95,37 @@ DECLARE search_key VARCHAR(40);
     ELSIF Tname = 'Album' THEN
 
     RETURN QUERY SELECT DISTINCT a.id FROM Album a WHERE a.name LIKE search_key;
+
+    END IF;
+
+    END;
+$function$;
+
+-----------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION search(item_name VARCHAR(30),Tname VARCHAR(30))
+ RETURNS TABLE (name varchar(30))
+ LANGUAGE plpgsql
+AS $function$
+DECLARE search_key VARCHAR(40);
+    BEGIN
+	search_key := CONCAT('%',item_name,'%');
+    
+    IF Tname = 'Artist' THEN
+
+    RETURN QUERY SELECT DISTINCT a.name FROM Artist a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Song' THEN
+
+    RETURN QUERY SELECT DISTINCT a.name FROM Song a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Producer' THEN
+	
+    RETURN QUERY SELECT DISTINCT a.name FROM Producer a WHERE a.name LIKE search_key;
+
+    ELSIF Tname = 'Album' THEN
+
+    RETURN QUERY SELECT DISTINCT a.name FROM Album a WHERE a.name LIKE search_key;
 
     END IF;
 

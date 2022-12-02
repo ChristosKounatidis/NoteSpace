@@ -74,13 +74,13 @@ public class Connection {
         } catch (Exception e){System.out.println(e);}     
         return null;
     }
-    public static void delete(String keyword, JPanel table){
+    public static void delete(String keyword, String table){
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
             
-            String selectString = "select delete_artist('"+keyword+"','"+table+"');";
+            String selectString = "select delete('"+keyword+"','"+table+"');";
             rs = statement.executeQuery(selectString);
             
             Connection.statement.close();

@@ -277,6 +277,11 @@ public class Managment extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
+        artistPanel.getAccessibleContext().setAccessibleName("Artist");
+        albumPanel.getAccessibleContext().setAccessibleName("Album");
+        songPanel.getAccessibleContext().setAccessibleName("Song");
+        producerPanel.getAccessibleContext().setAccessibleName("Producer");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -428,7 +433,8 @@ public class Managment extends javax.swing.JFrame {
 
             private void deleteBtnActionPerformed(ActionEvent evt) {
                 //Connection.delete(content, p);
-                System.out.println();
+                Connection.delete(content, label.getParent().getParent().getAccessibleContext().getAccessibleName());
+                //Connection.search(keyword, label.getParent().getParent().getAccessibleContext().getAccessibleName());
             }
         } 
         );

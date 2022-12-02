@@ -209,6 +209,9 @@
           <Dimension value="[300, 500]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Artist"/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -230,6 +233,9 @@
           <Dimension value="[300, 500]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Album"/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -289,6 +295,9 @@
           <Dimension value="[300, 500]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Song"/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -328,6 +337,9 @@
           <Dimension value="[300, 500]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Producer"/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
