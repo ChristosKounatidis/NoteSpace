@@ -454,7 +454,23 @@ public class Managment extends javax.swing.JFrame {
         p.add(row);
         
     }
-    
+    public JPanel getPanel(int i)
+    {
+        switch(i){
+        case  : 1
+        return this.artistPanel;
+        break;
+        case  : 2
+        return this.producerPanel;
+        break;        
+        case  : 3
+        return this.songPanel;
+        break;        
+        case  : 4
+        return this.albumPanel;
+        break;         
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel albLabel;
     private javax.swing.JButton albumBtn;
