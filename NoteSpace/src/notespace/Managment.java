@@ -434,7 +434,7 @@ public class Managment extends javax.swing.JFrame {
             private void deleteBtnActionPerformed(ActionEvent evt) {
                 //Connection.delete(content, p);
                 Connection.delete(content, label.getParent().getParent().getAccessibleContext().getAccessibleName());
-                //Connection.search(keyword, label.getParent().getParent().getAccessibleContext().getAccessibleName());
+                label.setBackground(Color.red);
             }
         } 
         );
