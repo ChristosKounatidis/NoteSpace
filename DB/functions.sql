@@ -91,19 +91,19 @@ DECLARE
     temp int;
 
     BEGIN
-    --by song name
+    --by song name (ψάχνει και με κομμάτι του ον´οματος )
     IF  search_method='by_name' THEN
     temp1 := perform search_item(search_key,'Song');
     RETURN QUERY SELECT s.name from Song s WHERE category=temp;
-    --by album
+    --by album (πρέπει το όνομα να ε´ιναι ακριβώς )
     ELSIF search_method='by_album' THEN
     temp1 := perform search_item(search_key,'Album');
     RETURN QUERY SELECT s.name from Song s WHERE album=temp;
-    --by producer 
+    --by producer (´οπως το πάνω)
     ELSIF search_method='by_producer' THEN
     temp1 := perform search_item(search_key,'Producer');
     RETURN QUERY SELECT s.name from Song s WHERE producer=temp;
-    --by artist  
+    --by artist  (όπως το πάνω)
     ELSIF search_method='by_artist' THEN
     temp1 := perform search_item(search_key,'Artist');
     RETURN QUERY SELECT s.name from Song s WHERE artist=temp;
