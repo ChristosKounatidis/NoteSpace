@@ -103,52 +103,8 @@ DECLARE search_key VARCHAR(40);
 $function$;
 
 -----------------------------------------------------------------------------------------------------
---search_x2 ,functions only to used in other functions
-
-CREATE OR REPLACE FUNCTION search_artist2(artist_name VARCHAR(30))
- RETURNS TABLE (id int)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',artist_name,'%');
-    RETURN QUERY SELECT DISTINCT a.id FROM Artist a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
-CREATE OR REPLACE FUNCTION search_album2(album_name VARCHAR(30))
- RETURNS TABLE (id int)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',album_name,'%');
-    RETURN QUERY SELECT DISTINCT a.id FROM Album a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
-CREATE OR REPLACE FUNCTION search_producer2(producer_name VARCHAR(30))
- RETURNS TABLE (id int)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',producer_name,'%');
-    RETURN QUERY SELECT DISTINCT a.id FROM Producer a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
-CREATE OR REPLACE FUNCTION search_song2(song_name VARCHAR(30))
- RETURNS TABLE (id int)
- LANGUAGE plpgsql
-AS $function$
-DECLARE search_key VARCHAR(40);
-    BEGIN
-	search_key := CONCAT('%',song_name,'%');
-    RETURN QUERY SELECT DISTINCT a.id FROM Song a WHERE a.name LIKE search_key;
-    END;
-$function$;
-
+--search_item  ,functions only to used in other functions
+-- returns ids based on string 
 CREATE OR REPLACE FUNCTION search_item(item_name VARCHAR(30),Tname VARCHAR(30))
  RETURNS TABLE (id int)
  LANGUAGE plpgsql
