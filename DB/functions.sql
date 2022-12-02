@@ -83,11 +83,43 @@ DECLARE
     END;
 $function$;
 
-
-
-
-CREATE OR REPLACE FUNCTION search_song(song_name VARCHAR(30),producer_name VARCHAR(30),album_name VARCHAR(30),category Category)
+CREATE OR REPLACE FUNCTION search_song(search_key VARCHAR(30),search_method VARCHAR(30))
  RETURNS TABLE (name varchar)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE 
+    temp int;
+
+    BEGIN
+    --by song name
+    IF  search_method='by_name' THEN
+    temp1 := perform search_item(search_key,'Song');
+    RETURN QUERY SELECT s.name from Song s WHERE category=temp;
+    --by album
+    ELSIF search_method='by_album' THEN
+    temp1 := perform search_item(search_key,'Album');
+    RETURN QUERY SELECT s.name from Song s WHERE album=temp;
+    --by producer 
+    ELSIF search_method='by_producer' THEN
+    temp1 := perform search_item(search_key,'Producer');
+    RETURN QUERY SELECT s.name from Song s WHERE producer=temp;
+    --by artist  
+    ELSIF search_method='by_artist' THEN
+    temp1 := perform search_item(search_key,'Artist');
+    RETURN QUERY SELECT s.name from Song s WHERE artist=temp;
+    --by category (η κατηγορία πρέπει να γραφτεί ακρ´ιβως ,combobox)
+    ELSIF search_method='by_category' THEN
+    RETURN QUERY SELECT s.name from Song s WHERE category=search_key;
+
+    END IF;
+    END;
+$function$;
+
+
+
+
+
+
 -----------------------------------------------------------------------------------------------------
 --search_x2 ,functions only to used in other functions
 
