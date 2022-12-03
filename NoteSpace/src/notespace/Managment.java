@@ -355,10 +355,10 @@ public class Managment extends javax.swing.JFrame {
             names = Connection.search(albumText.getText(),"Album");
         } catch (Exception e){System.out.println(e);} 
         
-//        //Γεμ´ιζει το JPanel με τα string
-//        for (int i = 0; i < names.size(); i++) {
-//            PanelFiller(albumPanel, names.get(i));
-//        }
+        //Γεμ´ιζει το JPanel με τα string
+        for (int i = 0; i < names.size(); i++) {
+            PanelFiller(albumPanel, names.get(i));
+        }
         
         albumPanel.revalidate();
         albumPanel.repaint();

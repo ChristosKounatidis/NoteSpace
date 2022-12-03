@@ -70,7 +70,22 @@ public class Connection {
             }
             else if(table=="Album"){
                 args = keyword.split(",");
-                selectString = "select search_album("+args[0]+args[1]+args[2]+");";
+                for (int i = 0; i <args.length; i++) {
+                    if(args[i].equals(" ")){
+                        args[i]="null";
+                    }
+                    else{
+                        args[i] = "\'"+args[i]+"\'";
+                    }
+                }
+                selectString = "select search_album("+args[0]+","+args[1]+","+args[2]+");";
+                rs = statement.executeQuery(selectString);
+                while(rs.next()) {
+                    names.add(rs.getString("search_album"));
+                }
+                Connection.statement.close();
+                Connection.dbConnection.close();
+                return names;
             }
             
             rs = statement.executeQuery(selectString);
