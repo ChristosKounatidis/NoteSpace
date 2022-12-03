@@ -98,8 +98,12 @@ public class Connection {
                 String filter = Managment.getSongFilter();
                 
                 selectString = "select search_song('"+keyword+"','";
-                if(filter.equals("Name"))      { selectString += "by_name"+"');";}
-                else if(filter.equals("Album")){ selectString += "by_album"+"');";}
+                if(filter.equals("Name")){ 
+                    selectString += "by_name"+"');";
+                }
+                else if(filter.equals("Album")){ 
+                    selectString += "by_album"+"');";
+                }
                 else if(filter.equals("Artist"))
                 {
                     selectString += "by_artist"+"');";

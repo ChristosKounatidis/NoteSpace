@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -366,6 +367,9 @@ public class Managment extends javax.swing.JFrame {
     }//GEN-LAST:event_albumBtnActionPerformed
 
     private void songBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_songBtnActionPerformed
+        if(songText.getText().equals("")){
+            return;
+        }
         //Αν το JPanel έχει περιεχομενο το αδειάζει
         if(songPanel.getSize()!=null){
             songPanel.removeAll();
@@ -507,9 +511,8 @@ public class Managment extends javax.swing.JFrame {
             edit.setVisible(true);
         }
     }
-    
-    public static String getSongFilter()
-    {
+
+    public static String getSongFilter() {
         return songFilter.getSelectedItem().toString();
     }
     
@@ -531,7 +534,7 @@ public class Managment extends javax.swing.JFrame {
     private javax.swing.JPanel producerPanel;
     private javax.swing.JTextField producerText;
     private javax.swing.JButton songBtn;
-    private javax.swing.JComboBox<String> songFilter;
+    public static javax.swing.JComboBox<String> songFilter;
     private javax.swing.JLabel songLabel;
     private javax.swing.JPanel songPanel;
     private javax.swing.JTextField songText;
