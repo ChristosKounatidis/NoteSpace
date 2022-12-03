@@ -8,6 +8,7 @@ package notespace;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -16,6 +17,7 @@ import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -432,7 +434,6 @@ public class Managment extends javax.swing.JFrame {
             }
 
             private void deleteBtnActionPerformed(ActionEvent evt) {
-                //Connection.delete(content, p);
                 Connection.delete(content, label.getParent().getParent().getAccessibleContext().getAccessibleName());
                 label.setBackground(Color.red);
             }
@@ -448,7 +449,8 @@ public class Managment extends javax.swing.JFrame {
             }
 
             private void editBtnActionPerformed(ActionEvent evt) {
-                System.out.println(2222);
+                String from = label.getParent().getParent().getAccessibleContext().getAccessibleName(); //Apo pou path8hke
+                editPanel(from);
             }
         } 
         );
@@ -459,6 +461,30 @@ public class Managment extends javax.swing.JFrame {
         edit.setBorder(BorderFactory.createLineBorder(Color.green, 2));
         p.add(row);
         
+    }
+    
+    public void editPanel(String label)
+    {
+        EditFrame edit = new EditFrame();
+        BoxLayout editlayout = new BoxLayout(edit, Y_AXIS);
+        edit.setLayout(editlayout);
+        
+        
+        if(label=="Artist"){
+            EditArtist artist = new EditArtist();
+            edit.add(artist);
+            edit.setVisible(true);
+
+        }
+        else if(label=="Producer"){
+                    
+        }
+        else if(label=="Album"){
+                    
+        }
+        else if(label=="Song"){
+                    
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
