@@ -62,8 +62,14 @@ public class Connection {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
             statement    = dbConnection.createStatement();
+            String selectString = "";
+            if (table=="Artist" || table == "Producer") {
+                selectString = "select search('"+keyword+"','"+table+"');";
+            }
+            else if(table=="Album"){
+                selectString = "select search_album('"+keyword+"','"+table+"');";
+            }
             
-            String selectString = "select search('"+keyword+"','"+table+"');";
             rs = statement.executeQuery(selectString);
             while(rs.next()) {
                 names.add(rs.getString("search"));

@@ -73,7 +73,9 @@
                           <Component id="songPanel" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="songLabel" min="-2" pref="65" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="songFilter" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="songBtn" min="-2" pref="119" max="-2" attributes="0"/>
                           </Group>
                           <Component id="songText" alignment="0" max="32767" attributes="0"/>
@@ -126,6 +128,7 @@
                                   <Component id="albumBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="songBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="producerBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="songFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -265,7 +268,6 @@
         <Property name="text" type="java.lang.String" value="&#x391;&#x3bd;&#x3b1;&#x3b6;&#x3ae;&#x3c4;&#x3b7;&#x3c3;&#x3b7;"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="producerBtnMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="producerBtnActionPerformed"/>
       </Events>
     </Component>
@@ -285,6 +287,10 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="albumText">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Album name, Song name, Artist name"/>
+        <Property name="toolTipText" type="java.lang.String" value="do not erase the commas"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="producerText">
     </Component>
@@ -354,5 +360,25 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JComboBox" name="songFilter">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="Name"/>
+            <StringItem index="1" value="Album"/>
+            <StringItem index="2" value="Producer"/>
+            <StringItem index="3" value="Artist"/>
+            <StringItem index="4" value="Category"/>
+          </StringArray>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Select your search method"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="songFilterActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

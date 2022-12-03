@@ -66,6 +66,7 @@ public class Managment extends javax.swing.JFrame {
         songLabel = new javax.swing.JLabel();
         songBtn = new javax.swing.JButton();
         producerPanel = new javax.swing.JPanel();
+        songFilter = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,11 +128,6 @@ public class Managment extends javax.swing.JFrame {
         prodLabel.setText("Παραγωγοί");
 
         producerBtn.setText("Αναζήτηση");
-        producerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                producerBtnMouseClicked(evt);
-            }
-        });
         producerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 producerBtnActionPerformed(evt);
@@ -146,6 +142,9 @@ public class Managment extends javax.swing.JFrame {
                 albumBtnActionPerformed(evt);
             }
         });
+
+        albumText.setText("Album name, Song name, Artist name");
+        albumText.setToolTipText("do not erase the commas");
 
         songPanel.setAutoscrolls(true);
         songPanel.setPreferredSize(new java.awt.Dimension(300, 500));
@@ -184,6 +183,14 @@ public class Managment extends javax.swing.JFrame {
             producerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
+
+        songFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Album", "Producer", "Artist", "Category" }));
+        songFilter.setToolTipText("Select your search method");
+        songFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                songFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,7 +235,9 @@ public class Managment extends javax.swing.JFrame {
                             .addComponent(songPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(songLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(116, 116, 116)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(songFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
                                 .addComponent(songBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(songText)))
                     .addGroup(layout.createSequentialGroup()
@@ -268,7 +277,8 @@ public class Managment extends javax.swing.JFrame {
                                     .addComponent(songLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(albumBtn)
                                     .addComponent(songBtn)
-                                    .addComponent(producerBtn))
+                                    .addComponent(producerBtn)
+                                    .addComponent(songFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(artistText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,9 +386,9 @@ public class Managment extends javax.swing.JFrame {
         songPanel.setVisible(true);
     }//GEN-LAST:event_songBtnActionPerformed
 
-    private void producerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producerBtnMouseClicked
-        // AKYROO
-    }//GEN-LAST:event_producerBtnMouseClicked
+    private void songFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_songFilterActionPerformed
+        
+    }//GEN-LAST:event_songFilterActionPerformed
     
     /**
      * @param args the command line arguments
@@ -515,6 +525,7 @@ public class Managment extends javax.swing.JFrame {
     private javax.swing.JPanel producerPanel;
     private javax.swing.JTextField producerText;
     private javax.swing.JButton songBtn;
+    private javax.swing.JComboBox<String> songFilter;
     private javax.swing.JLabel songLabel;
     private javax.swing.JPanel songPanel;
     private javax.swing.JTextField songText;
