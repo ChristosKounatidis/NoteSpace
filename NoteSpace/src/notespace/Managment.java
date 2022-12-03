@@ -370,6 +370,27 @@ public class Managment extends javax.swing.JFrame {
         if(songPanel.getSize()!=null){
             songPanel.removeAll();
         }
+        
+        if(songFilter.getSelectedItem().toString().equals("Name"))
+        {
+        
+        }
+        else if(songFilter.getSelectedItem().toString().equals("Album"))
+        {
+        
+        }
+        else if(songFilter.getSelectedItem().toString().equals("Producer"))
+        {
+        
+        }
+        else if(songFilter.getSelectedItem().toString().equals("Artist"))
+        {
+        
+        }
+        
+        
+        
+        
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql

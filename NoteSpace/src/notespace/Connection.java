@@ -95,9 +95,25 @@ public class Connection {
                 return names;
             }
             else if(table=="Song"){
+                String filter = Managment.getSongFilter();
                 
+                selectString = "select search_song('"+keyword+"','";
+                if(filter.equals("Name"))      { selectString += "by_name"+"');";}
+                else if(filter.equals("Album")){ selectString += "by_album"+"');";}
+                else if(filter.equals("Artist"))
+                {
+                    selectString += "by_artist"+"');";
+                }
+                else if(filter.equals("Producer"))
+                {
+                    selectString += "by_song"+"');";
+                }
+                else if(filter.equals("Category"))
+                {                
+                    selectString += "by_category"+"');";
+                }
                 
-                
+                rs = statement.executeQuery(selectString);
                 while(rs.next()) {
                     names.add(rs.getString("search_song"));
                 }
