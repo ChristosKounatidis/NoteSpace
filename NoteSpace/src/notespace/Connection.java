@@ -67,6 +67,13 @@ public class Connection {
             String selectString = "";
             if (table=="Artist" || table == "Producer") {
                 selectString = "select search('"+keyword+"','"+table+"');";
+                rs = statement.executeQuery(selectString);
+                while(rs.next()) {
+                    names.add(rs.getString("search"));
+                }
+                Connection.statement.close();
+                Connection.dbConnection.close();
+                return names;
             }
             else if(table=="Album"){
                 args = keyword.split(",");
@@ -87,11 +94,18 @@ public class Connection {
                 Connection.dbConnection.close();
                 return names;
             }
-            
-            rs = statement.executeQuery(selectString);
-            while(rs.next()) {
-                names.add(rs.getString("search"));
+            else if(table=="Song"){
+                
+                
+                
+                while(rs.next()) {
+                    names.add(rs.getString("search_song"));
+                }
+                Connection.statement.close();
+                Connection.dbConnection.close();
+                return names;
             }
+            
             Connection.statement.close();
             Connection.dbConnection.close();
             return names;
