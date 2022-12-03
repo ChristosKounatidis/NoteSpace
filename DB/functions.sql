@@ -66,9 +66,15 @@ DECLARE
 
     search_key1 := CONCAT('%',artist_name,'%');
     search_key1 := search(search_key1,'Artist');
+    temp1 := search_item(search_key1,'Artist');
 
+    search_key2 := CONCAT('%',song_name,'%');
+    search_key2 := search(search_key2,'Song');
+    temp2 := search_item(search_key2,'Song');
 
-    RETURN QUERY SELECT DISTINCT a.name FROM album where a.id=song;
+    temp3 := (select a.song from Artist_Song a where temp1=artist and temp2=song;)
+
+    RETURN QUERY SELECT DISTINCT a.name FROM album where a.id=temp3::int;
 	
     --album and artist
     ELSIF song_name IS NULL THEN
