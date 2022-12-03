@@ -222,3 +222,33 @@ AS $function$
 $function$;
 
 -----------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION edit_item(item_id int,table_name VARCHAR(15),arguments VARCHAR(120))
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+    DECLARE arg1 VARCHAR(30);
+            arg2 DATE;
+            arg3 int;
+            arg4 int;
+    BEGIN
+    IF table_name = 'Artist' THEN
+    arg1 := select SPLIT_PART(arguments,',',1);
+    UPDATE SET WHERE id = item_id;
+    ELSIF table_name = 'Producer' THEN
+    arg1 := select SPLIT_PART(arguments,',',1);
+    UPDATE SET WHERE id = item_id;
+    
+    ELSIF table_name = 'Song' THEN
+    arg1 := select SPLIT_PART(arguments,',',1);
+    arg3 := select SPLIT_PART(arguments,',',2);
+    arg4 := select SPLIT_PART(arguments,',',3);
+
+
+    UPDATE SET WHERE id = item_id;
+    
+    ELSIF table_name = 'Album' THEN
+    UPDATE SET WHERE id = item_id;
+    END IF;
+    END;
+$function$;
