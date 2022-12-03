@@ -7,6 +7,7 @@ package notespace;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -466,24 +467,29 @@ public class Managment extends javax.swing.JFrame {
     public void editPanel(String label)
     {
         EditFrame edit = new EditFrame();
-        BoxLayout editlayout = new BoxLayout(edit, Y_AXIS);
+        FlowLayout editlayout = new FlowLayout();
         edit.setLayout(editlayout);
         
         
         if(label=="Artist"){
             EditArtist artist = new EditArtist();
-            edit.add(artist);
+            edit.add(artist,editlayout);
             edit.setVisible(true);
-
         }
         else if(label=="Producer"){
-                    
+            EditProducer producer = new EditProducer();
+            edit.add(producer,editlayout);
+            edit.setVisible(true);
         }
         else if(label=="Album"){
-                    
+            EditAlbum album = new EditAlbum();
+            edit.add(album,editlayout);
+            edit.setVisible(true);
         }
         else if(label=="Song"){
-                    
+            EditSong song = new EditSong();
+            edit.add(song,editlayout);
+            edit.setVisible(true);
         }
     }
     

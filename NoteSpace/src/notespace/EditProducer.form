@@ -26,7 +26,7 @@
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="newArtistName" min="-2" pref="193" max="-2" attributes="0"/>
+                      <Component id="newProducerName" min="-2" pref="193" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="84" max="32767" attributes="0"/>
@@ -46,7 +46,7 @@
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newArtistName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newProducerName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Confirm" min="-2" max="-2" attributes="0"/>
@@ -66,12 +66,9 @@
         <Property name="text" type="java.lang.String" value="&#x39d;&#x3ad;&#x3bf; &#x38c;&#x3bd;&#x3bf;&#x3bc;&#x3b1;:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="newArtistName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="newProducerName">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newArtistNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newProducerNameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Confirm">

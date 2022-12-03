@@ -72,9 +72,9 @@ DECLARE
     search_key2 := search(search_key2,'Song');
     temp2 := search_item(search_key2,'Song');
 
-    temp3 := (select a.song from Artist_Song a where temp1=artist and temp2=song;)
+    temp3 := (select a.song from Artist_Song a where temp1=a.artist and temp2=a.song);
 
-    RETURN QUERY SELECT DISTINCT a.name FROM album where a.id=temp3::int;
+    RETURN QUERY SELECT DISTINCT a.name FROM album a where a.id=temp3::int;
 	
     --album and artist
     ELSIF song_name IS NULL THEN

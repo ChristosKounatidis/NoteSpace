@@ -27,29 +27,24 @@ public class EditSong extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        newSongAlbum = new javax.swing.JTextField();
+        newSongArtist = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        newArtistName = new javax.swing.JTextField();
+        newSongName = new javax.swing.JTextField();
         Confirm = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        newSongProducer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
 
         jLabel1.setText("Επεξεργασία Τραγούδι ");
 
         jLabel2.setText("Νέο Όνομα:");
 
-        newArtistName.setText("jTextField1");
-        newArtistName.addActionListener(new java.awt.event.ActionListener() {
+        newSongName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newArtistNameActionPerformed(evt);
+                newSongNameActionPerformed(evt);
             }
         });
 
@@ -62,9 +57,7 @@ public class EditSong extends javax.swing.JPanel {
 
         jLabel3.setText("Νέο Αλμπουμ");
 
-        jLabel4.setText("Νέα ημερομηνία");
-
-        jTextField3.setText("jTextField2");
+        jLabel4.setText("Νέος Καλλιτέχνης");
 
         jLabel5.setText("Νέος Παραγωγός");
 
@@ -86,12 +79,12 @@ public class EditSong extends javax.swing.JPanel {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
+                            .addComponent(newSongProducer)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newArtistName, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2))
+                                    .addComponent(newSongName, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(newSongAlbum)
+                                    .addComponent(newSongArtist))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -107,28 +100,28 @@ public class EditSong extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(newArtistName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSongAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSongArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSongProducer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(Confirm)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newArtistNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArtistNameActionPerformed
+    private void newSongNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSongNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_newArtistNameActionPerformed
+    }//GEN-LAST:event_newSongNameActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
         // TODO add your handling code here:
@@ -142,9 +135,9 @@ public class EditSong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField newArtistName;
+    private javax.swing.JTextField newSongAlbum;
+    private javax.swing.JTextField newSongArtist;
+    private javax.swing.JTextField newSongName;
+    private javax.swing.JTextField newSongProducer;
     // End of variables declaration//GEN-END:variables
 }

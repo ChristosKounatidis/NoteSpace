@@ -29,21 +29,20 @@ public class EditAlbum extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        newArtistName = new javax.swing.JTextField();
+        newAlbumName = new javax.swing.JTextField();
         Confirm = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        newAlbumArtist = new javax.swing.JTextField();
+        newAlbumDate = new javax.swing.JTextField();
 
         jLabel1.setText("Επεξεργασία Album");
 
         jLabel2.setText("Νέο Όνομα:");
 
-        newArtistName.setText("jTextField1");
-        newArtistName.addActionListener(new java.awt.event.ActionListener() {
+        newAlbumName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newArtistNameActionPerformed(evt);
+                newAlbumNameActionPerformed(evt);
             }
         });
 
@@ -58,9 +57,11 @@ public class EditAlbum extends javax.swing.JPanel {
 
         jLabel4.setText("Νέα ημερομηνία");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
+        newAlbumArtist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newAlbumArtistActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,9 +82,9 @@ public class EditAlbum extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Confirm)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(newArtistName, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField2)))))
+                                .addComponent(newAlbumName, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                .addComponent(newAlbumArtist)
+                                .addComponent(newAlbumDate)))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,28 +95,32 @@ public class EditAlbum extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(newArtistName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newAlbumName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newAlbumArtist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newAlbumDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Confirm)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newArtistNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArtistNameActionPerformed
+    private void newAlbumNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAlbumNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_newArtistNameActionPerformed
+    }//GEN-LAST:event_newAlbumNameActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConfirmActionPerformed
+
+    private void newAlbumArtistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAlbumArtistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newAlbumArtistActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -124,8 +129,8 @@ public class EditAlbum extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField newArtistName;
+    private javax.swing.JTextField newAlbumArtist;
+    private javax.swing.JTextField newAlbumDate;
+    private javax.swing.JTextField newAlbumName;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,7 +48,6 @@ public class EditArtist extends javax.swing.JPanel {
 
         jLabel2.setText("Νέο Όνομα:");
 
-        newArtistName.setText("jTextField1");
         newArtistName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newArtistNameActionPerformed(evt);

@@ -84,9 +84,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="newArtistName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newArtistNameActionPerformed"/>
       </Events>
