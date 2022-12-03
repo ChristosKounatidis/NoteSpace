@@ -16,7 +16,7 @@ $function$;
 ----------------------------------------------------------
 --search functions for data
 
-CREATE OR REPLACE FUNCTION search_album(album_name VARCHAR(30),song_name VARCHAR(30),artist_name VARCHAR(30))
+CREATE OR REPLACE FUNCTION search_album(album_name VARCHAR(30) default null ,song_name VARCHAR(30)default null ,artist_name VARCHAR(30) default null)
  RETURNS TABLE (name varchar)
  LANGUAGE plpgsql
 AS $function$
@@ -26,6 +26,7 @@ DECLARE
     search_key3 VARCHAR(40);
     temp1 int;
     temp2 int;
+    temp3 int;
     
     BEGIN
     --only album
@@ -33,53 +34,60 @@ DECLARE
     search_key1 := CONCAT('%',album_name,'%');
     RETURN QUERY SELECT DISTINCT a.name FROM Album a WHERE a.name LIKE search_key1;
     --only song
-    ELSIF producer_name is null and artist_name is null THEN
+    ELSIF album_name is null and artist_name is null THEN
 	search_key1 := CONCAT('%',song_name,'%');
     RETURN QUERY SELECT DISTINCT a.name 
                  FROM Album a 
                  WHERE a.id 
                  IN (select album from song s where s.name LIKE search_key1);
     --only artist
-    ELSIF producer_name is null and song_name is null THEN
+    ELSIF album_name is null and song_name is null THEN
     search_key1 := CONCAT('%',artist_name,'%');
-    RETURN QUERY SELECT DISTINCT a.name 
-                 FROM Album a 
-                 WHERE a.id 
-                 IN (select album from artist s where s.name LIKE search_key1);
+	temp1 := search_item(artist_name, 'Artist');
+    RETURN QUERY SELECT DISTINCT a.name
+				from album a
+				where a.artist = temp1;
 
     --Στα πολλαπλά φ´ιλτρα πρέπει να ε´ιναι ακριβ´ως ονόματα.
     --album and song
     ELSIF artist_name is null THEN
-    search_key1 := album_name;
-    search_key2 := song_name;
+    
+	search_key1 := CONCAT('%',album_name,'%');
+	search_key2 := CONCAT('%',song_name,'%');
+
     RETURN QUERY SELECT DISTINCT a.name 
                  FROM Album a 
-                 WHERE a.name = search_key1 
-                 and a.id IN (select album from song s where s.name = search_key2);
-    --ok
-
-
+                 WHERE a.name like search_key1 
+                 and a.id IN (select s.album from song s where s.name like search_key2);
+				 
     --song and artist
     ELSIF album_name is null THEN
-    search_key1 := song_name;-- ΘΕΛΩ INT ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΜΕΣΑ ΣΤΗΝ ΣΕΛΕΚΤ
-    temp1 := search_item(song_name,'Song');
-    temp2 := search_item(artist_name,'Artist');
+    -- ΘΕΛΩ INT ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΜΕΣΑ ΣΤΗΝ ΣΕΛΕΚΤ
+    search_key1 := CONCAT('%',song_name,'%');
+	search_key2 := CONCAT('%',artist_name,'%');
+	temp1 := search_key1(search_key1,'Song');
+    temp2 := search_item(search_key2,'Artist');
     
-    RETURN QUERY SELECT DISTINCT s.album
-                 FROM Song s 
-                 WHERE s.name =search_key2
-                 AND EXISTS(select * from Artist_Song WHERE song = temp1 and artist = temp2); 
-    --ok    
-
-
+    temp3:= (SELECT DISTINCT s.album
+                  FROM Song s 
+                  WHERE s.name =search_key1
+                  AND EXISTS(select * from Artist_Song WHERE song = temp1 and artist = temp2));
+	
+    RETURN QUERY select a.name from album a where a.id=temp3;
+	
     --album and artist
     ELSIF song_name IS NULL THEN
-    temp1 = search_item(artist_name,'Artist');
-    RETURN QUERY SELECT DISTInCT 
+	
+	search_key1 := search(album_name,'Album');
+	search_key2 := search(artist_name,'Artist');
+    temp1 = search_item(search_key2,'Artist');
+		
+    RETURN QUERY SELECT DISTINCT a.name
                  FROM Album a
-                 where a.name=album_name
+                 where a.name like search_key1
                  and a.artist = temp1;
     --ok
+	END IF;
     END;
 $function$;
 
@@ -130,8 +138,6 @@ AS $function$
 DECLARE search_key VARCHAR(40);
     BEGIN
 	
-    
-    
 	search_key := CONCAT('%',item_name,'%');
     
     IF Tname = 'Artist' THEN
