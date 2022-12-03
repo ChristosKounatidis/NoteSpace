@@ -9,12 +9,12 @@ package notespace;
  *
  * @author it174
  */
-public class EditArtist extends javax.swing.JPanel {
+public class EditProducer extends javax.swing.JPanel {
 
     /**
-     * Creates new form EditArtist
+     * Creates new form EditProducer
      */
-    public EditArtist() {
+    public EditProducer() {
         initComponents();
     }
 

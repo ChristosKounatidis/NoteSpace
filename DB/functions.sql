@@ -63,17 +63,12 @@ DECLARE
     --song and artist
     ELSIF album_name is null THEN
     -- ΘΕΛΩ INT ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΜΕΣΑ ΣΤΗΝ ΣΕΛΕΚΤ
-    search_key1 := CONCAT('%',song_name,'%');
-	search_key2 := CONCAT('%',artist_name,'%');
-	temp1 := search_key1(search_key1,'Song');
-    temp2 := search_item(search_key2,'Artist');
-    
-    temp3:= (SELECT DISTINCT s.album
-                  FROM Song s 
-                  WHERE s.name =search_key1
-                  AND EXISTS(select * from Artist_Song WHERE song = temp1 and artist = temp2));
-	
-    RETURN QUERY select a.name from album a where a.id=temp3;
+
+    search_key1 := CONCAT('%',artist_name,'%');
+    search_key1 := search(search_key1,'Artist');
+
+
+    RETURN QUERY SELECT DISTINCT a.name FROM album where a.id=song;
 	
     --album and artist
     ELSIF song_name IS NULL THEN
