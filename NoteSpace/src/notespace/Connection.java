@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JPanel;
 
 public class Connection {
@@ -58,6 +59,7 @@ public class Connection {
     
     public static ArrayList<String> search(String keyword, String table) throws Exception{
         ArrayList<String> names = new ArrayList<>();
+        String[] args ;
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -67,7 +69,8 @@ public class Connection {
                 selectString = "select search('"+keyword+"','"+table+"');";
             }
             else if(table=="Album"){
-                selectString = "select search_album('"+keyword+"','"+table+"');";
+                args = keyword.split(",");
+                selectString = "select search_album("+args[0]+args[1]+args[2]+");";
             }
             
             rs = statement.executeQuery(selectString);
