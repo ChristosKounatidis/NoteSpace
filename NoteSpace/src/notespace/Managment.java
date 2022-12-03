@@ -5,6 +5,10 @@
  */
 package notespace;
 
+import notespace.panels.EditSong;
+import notespace.panels.EditProducer;
+import notespace.panels.EditArtist;
+import notespace.panels.EditAlbum;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
