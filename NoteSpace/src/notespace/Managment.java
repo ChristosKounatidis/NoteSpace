@@ -371,26 +371,6 @@ public class Managment extends javax.swing.JFrame {
             songPanel.removeAll();
         }
         
-        if(songFilter.getSelectedItem().toString().equals("Name"))
-        {
-        
-        }
-        else if(songFilter.getSelectedItem().toString().equals("Album"))
-        {
-        
-        }
-        else if(songFilter.getSelectedItem().toString().equals("Producer"))
-        {
-        
-        }
-        else if(songFilter.getSelectedItem().toString().equals("Artist"))
-        {
-        
-        }
-        
-        
-        
-        
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
@@ -526,6 +506,11 @@ public class Managment extends javax.swing.JFrame {
             edit.add(song,editlayout);
             edit.setVisible(true);
         }
+    }
+    
+    public static String getSongFilter()
+    {
+        return songFilter.getSelectedItem().toString();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
