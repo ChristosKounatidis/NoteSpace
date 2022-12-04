@@ -237,31 +237,48 @@ $function$;
 -----------------------------------------------------------------------------------------------
 --edit item (gia OLA)
 
-CREATE OR REPLACE FUNCTION edit_item(item_id int,table_name VARCHAR(15),arguments VARCHAR(120))
+CREATE OR REPLACE FUNCTION edit_item(old_data varchar(30),arguments VARCHAR(120),table_name VARCHAR(15))
  RETURNS void
  LANGUAGE plpgsql
 AS $function$
-    DECLARE arg1 VARCHAR(30);
+    DECLARE 
+            search_key int;
+            arg1 VARCHAR(30);
+            arg6 VARCHAR(30)
             arg2 DATE;
             arg3 int;
             arg4 int;
+            arg5 int;
     BEGIN
+    arg1 := SPLIT_PART(arguments,',',1);
+    arg2 := SPLIT_PART(arguments,',',1);
+    arg := SPLIT_PART(arguments,',',1);
+    arg1 := SPLIT_PART(arguments,',',1);
+    arg1 := SPLIT_PART(arguments,',',1);
+
     IF table_name = 'Artist' THEN
+    search_key := search_item(old_data,'Artist');
     arg1 := select SPLIT_PART(arguments,',',1);
-    UPDATE SET WHERE id = item_id;
+    UPDATE Artist SET WHERE id = search_key;
+
     ELSIF table_name = 'Producer' THEN
-    arg1 := select SPLIT_PART(arguments,',',1);
-    UPDATE SET WHERE id = item_id;
+    search_key := search_item(old_data,'Producer');
+    arg1 := select SPLIT_PART(arguments,',' ,1);
+    UPDATE Artist SET WHERE id = search_key;
     
     ELSIF table_name = 'Song' THEN
-    arg1 := select SPLIT_PART(arguments,',',1);
-    arg3 := select SPLIT_PART(arguments,',',2);
-    arg4 := select SPLIT_PART(arguments,',',3);
-
-    UPDATE SET WHERE id = item_id;
+    search_key := search_item(old_data,'Song');
+    UPDATE Artist SET WHERE id = search_key;
     
     ELSIF table_name = 'Album' THEN
-    UPDATE SET WHERE id = item_id;
+    arg1 := SPLIT_PART(arguments,',',1);//onoma
+    arg6 := SPLIT_PART(arguments,',',2);//artist
+    arg2 := SPLIT_PART(arguments,',',3);//date
+    arg2 := search_item(arg6,'Album');
+    search_key := search_item(old_data,'Album');
+
+    UPDATE Album a SET a.name=arg1 a.artist=arg6 a.date=arg2::date WHERE id = search_key;
+    
     END IF;
     END;
 $function$;
