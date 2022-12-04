@@ -247,7 +247,6 @@ AS $function$
             arg2 VARCHAR(30);
             arg3 VARCHAR(30);
             arg4 VARCHAR(30)
-            arg5 DATE;
             arg6 int;
             arg7 int;
             arg8 int;
