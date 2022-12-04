@@ -246,7 +246,7 @@ AS $function$
             arg1 VARCHAR(30);
             arg2 VARCHAR(30);
             arg3 VARCHAR(30);
-            arg4 VARCHAR(30)
+            arg4 VARCHAR(30);
             arg6 int;
             arg7 int;
             arg8 int;
@@ -258,36 +258,36 @@ AS $function$
 
     IF table_name = 'Artist' THEN
     search_key := search_item(old_data,'Artist');
-    UPDATE Artist a SET a.name=arg1 WHERE a.id = search_key;
+    UPDATE artist SET name=arg1 WHERE id = search_key;
 
     ELSIF table_name = 'Producer' THEN
     search_key := search_item(old_data,'Producer');
 
-    UPDATE Producer p SET p.name=arg1 WHERE p.id = search_key;
+    UPDATE Producer SET name=arg1 WHERE id = search_key;
     
     ELSIF table_name = 'Song' THEN
     search_key := search_item(old_data,'Song');
-    //onoma
-    //album
-    //artist
-    //producer
-    arg6 = search_item(arg2,'Album');
-    arg7 = search_item(arg4,'Producer');
-    arg8 = search_item(arg3,'Artist');
+    --onoma
+    --album
+    --artist
+    --producer
+    arg6 := search_item(arg2,'Producer');
+    arg7 := search_item(arg3,'Album');
+    arg8 := search_item(arg4,'Artist');
 
-    UPDATE Song s SET s.name=arg1 s.producer=arg7 s.album=arg6  WHERE s.id = search_key;
+    UPDATE Song SET name=arg1, producer=arg7, album=arg6  WHERE id = search_key;
 
-    UPDATE Artist_Song a SET a.artist=arg8 WHERE song = search_key;
+    UPDATE Artist_Song SET artist=arg8 WHERE song = search_key;
     
     ELSIF table_name = 'Album' THEN
     search_key := search_item(old_data,'Album');
     --onoma
     --artist
     --date
-    arg6 := search_item(arg6,'Album');
+    arg6 := search_item(arg3,'Artist');
     
 
-    UPDATE Album a SET a.name=arg1 a.artist=arg6 a.date=arg3::date WHERE a.id = search_key;
+    UPDATE Album SET name=arg1, artist=arg6, releasedate=arg2::date WHERE id = search_key;
     
     END IF;
     END;
