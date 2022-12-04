@@ -18,23 +18,6 @@ public class Connection {
     static ResultSet rs	= null;
 
     public static void main (String[] argv) throws Exception{
-        //Class.forName (driverClassName);
-        //dbConnection = DriverManager.getConnection (url, username, passwd);
-        //statement    = dbConnection.createStatement();
-        
-        //String selectString = "select * from artist"; //test query
-        
-        //rs = statement.executeQuery(selectString);
-        
-        /* //test
-        while(rs.next()) {
-		int rating = rs.getInt("id");
-                String mage = rs.getString("name");
-		System.out.println( rating + "        " + mage );
-	}
-        */
-        //statement.close();
-        //dbConnection.close();
         NoteSpaceLogin login = new NoteSpaceLogin();
         login.setVisible(true);
     }
@@ -56,7 +39,6 @@ public class Connection {
         } catch (Exception e){System.out.println(e);}     
         return false;
     }
-    
     public static ArrayList<String> search(String keyword, String table) throws Exception{
         ArrayList<String> names = new ArrayList<>();
         String[] args ;
@@ -144,5 +126,19 @@ public class Connection {
             Connection.statement.close();
             Connection.dbConnection.close();
         } catch (Exception e){System.out.println(e);}
+    }
+    public static void edit(String oldData, String newData, String table){
+        try {
+            Class.forName (driverClassName);
+            dbConnection = DriverManager.getConnection (url, username, passwd);
+            statement    = dbConnection.createStatement();
+            
+            String selectString = "select edit_item('"+oldData+"','"+newData+"','"+table+"');";
+            rs = statement.executeQuery(selectString);
+            
+            Connection.statement.close();
+            Connection.dbConnection.close();
+                        
+        } catch (Exception e){System.out.println(e);}           
     }
 }
