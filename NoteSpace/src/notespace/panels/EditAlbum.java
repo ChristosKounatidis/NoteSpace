@@ -14,8 +14,10 @@ public class EditAlbum extends javax.swing.JPanel {
     /**
      * Creates new form EditAlbum
      */
-    public EditAlbum() {
+    public EditAlbum(String s) {
         initComponents();
+        contentPanel.setText(s);
+
     }
 
     /**
@@ -35,6 +37,7 @@ public class EditAlbum extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         newAlbumArtist = new javax.swing.JTextField();
         newAlbumDate = new javax.swing.JTextField();
+        contentPanel = new javax.swing.JLabel();
 
         jLabel1.setText("Επεξεργασία Album");
 
@@ -63,6 +66,8 @@ public class EditAlbum extends javax.swing.JPanel {
             }
         });
 
+        contentPanel.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +76,9 @@ public class EditAlbum extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(contentPanel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -91,7 +98,9 @@ public class EditAlbum extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(contentPanel))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -125,6 +134,7 @@ public class EditAlbum extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirm;
+    private javax.swing.JLabel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

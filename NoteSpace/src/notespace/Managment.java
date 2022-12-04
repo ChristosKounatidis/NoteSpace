@@ -470,7 +470,7 @@ public class Managment extends javax.swing.JFrame {
 
             private void editBtnActionPerformed(ActionEvent evt) {
                 String from = label.getParent().getParent().getAccessibleContext().getAccessibleName(); //Apo pou path8hke
-                editPanel(from);
+                editPanel(from,content);
             }
         } 
         );
@@ -483,7 +483,7 @@ public class Managment extends javax.swing.JFrame {
         
     }
     
-    public void editPanel(String label)
+    public void editPanel(String label, String content)
     {
         EditFrame edit = new EditFrame();
         FlowLayout editlayout = new FlowLayout();
@@ -491,25 +491,26 @@ public class Managment extends javax.swing.JFrame {
         
         
         if(label=="Artist"){
-            EditArtist artist = new EditArtist();
+            EditArtist artist = new EditArtist(content);
             edit.add(artist,editlayout);
             edit.setVisible(true);
         }
         else if(label=="Producer"){
-            EditProducer producer = new EditProducer();
+            EditProducer producer = new EditProducer(content);
             edit.add(producer,editlayout);
             edit.setVisible(true);
         }
         else if(label=="Album"){
-            EditAlbum album = new EditAlbum();
+            EditAlbum album = new EditAlbum(content);
             edit.add(album,editlayout);
             edit.setVisible(true);
         }
         else if(label=="Song"){
-            EditSong song = new EditSong();
+            EditSong song = new EditSong(content);
             edit.add(song,editlayout);
             edit.setVisible(true);
         }
+        
     }
 
     public static String getSongFilter() {
