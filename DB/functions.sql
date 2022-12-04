@@ -268,6 +268,17 @@ AS $function$
     
     ELSIF table_name = 'Song' THEN
     search_key := search_item(old_data,'Song');
+    //onoma
+    //album
+    //artist
+    //producer
+    arg1 := SPLIT_PART(arguments,',',1);
+    arg := SPLIT_PART(arguments,',',2);
+    arg := SPLIT_PART(arguments,',',3);
+    arg := SPLIT_PART(arguments,',',4);
+
+
+
     UPDATE Artist SET WHERE id = search_key;
     
     ELSIF table_name = 'Album' THEN
