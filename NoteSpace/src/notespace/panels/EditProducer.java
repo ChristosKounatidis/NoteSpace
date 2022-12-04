@@ -14,8 +14,10 @@ public class EditProducer extends javax.swing.JPanel {
     /**
      * Creates new form EditProducer
      */
-    public EditProducer() {
+    public EditProducer(String s) {
         initComponents();
+        contentPanel.setText(s);
+
     }
 
     /**
@@ -31,6 +33,7 @@ public class EditProducer extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         newProducerName = new javax.swing.JTextField();
         Confirm = new javax.swing.JButton();
+        contentPanel = new javax.swing.JLabel();
 
         jLabel1.setText("Επεξεργασία Producer");
 
@@ -49,6 +52,8 @@ public class EditProducer extends javax.swing.JPanel {
             }
         });
 
+        contentPanel.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,7 +62,9 @@ public class EditProducer extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(contentPanel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel2)
@@ -73,7 +80,9 @@ public class EditProducer extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(contentPanel))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -95,6 +104,7 @@ public class EditProducer extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirm;
+    private javax.swing.JLabel contentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField newProducerName;
