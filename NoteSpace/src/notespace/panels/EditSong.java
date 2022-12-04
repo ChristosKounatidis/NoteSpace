@@ -5,6 +5,10 @@
  */
 package notespace.panels;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import notespace.Connection;
+
 /**
  *
  * @author it174
@@ -144,7 +148,16 @@ public class EditSong extends javax.swing.JPanel {
     }//GEN-LAST:event_newSongNameActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        // TODO add your handling code here:
+        String newData1 = newSongName.getText().toString()+","+newSongArtist.getText().toString()+","+newSongProducer.getText().toString()+","+newSongAlbum.getText().toString()+","+newSongCategory.getText().toString();
+        String newData2 = newSongName.getText().toString()+","+newSongProducer.getText().toString()+","+newSongAlbum.getText().toString()+","+newSongArtist.getText().toString();
+        if(contentPanel.getText().toString().equals("new Song")){
+            Connection.insert(newData1,"Song");//TO PANEL EINAI APO INSERT
+        }
+        else{
+            Connection.edit(contentPanel.getText().toString(),newData2,"Song");//TO PANEL EINAI APO EDIT
+        }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_ConfirmActionPerformed
 
 

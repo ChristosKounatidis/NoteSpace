@@ -160,7 +160,7 @@ public class Connection {
             selectString = "select new_Album('"+args[0]+"','"+args[1]+"','"+args[2]+"');";
             }
             else if(table.equals("Song")){
-            selectString = "select new_Song('"+args[0]+"','"+args[1]+"','"+args[2]+"','"+args[3]+"','"+args[4]+"');";
+            selectString = "select new_Song('"+args[0]+"',"+args[1]+","+args[2]+","+args[3]+",'"+args[4]+"');";
             }
                         
             rs = statement.executeQuery(selectString);

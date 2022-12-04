@@ -34,8 +34,6 @@ song VARCHAR(30);
     BEGIN
     insert into Song(name,producer,album,category) values ($1,$3,$4,$5::Category);
 	song := (select id from Song where name=$1);
-
-    
     insert into Artist_Song(artist,song) values ($2,song::int);
     END;
 $function$;

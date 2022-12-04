@@ -5,6 +5,10 @@
  */
 package notespace.panels;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import notespace.Connection;
+
 /**
  *
  * @author it174
@@ -125,7 +129,15 @@ public class EditAlbum extends javax.swing.JPanel {
     }//GEN-LAST:event_newAlbumNameActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        // TODO add your handling code here:
+        String newData = newAlbumName.getText().toString()+","+newAlbumDate.getText().toString()+","+newAlbumArtist.getText().toString();
+        if(contentPanel.getText().toString().equals("new Album")){
+            Connection.insert(newData,"Album");//TO PANEL EINAI APO INSERT
+        }
+        else{
+            Connection.edit(contentPanel.getText().toString(),newData,"Album");//TO PANEL EINAI APO EDIT
+        }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void newAlbumArtistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAlbumArtistActionPerformed

@@ -5,6 +5,8 @@
  */
 package notespace.panels;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import notespace.Connection;
 
 /**
@@ -107,6 +109,8 @@ public class EditProducer extends javax.swing.JPanel {
         else{
             Connection.edit(contentPanel.getText().toString(),newProducerName.getText().toString(),"Producer");//TO PANEL EINAI APO EDIT
         }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_ConfirmActionPerformed
 
 
