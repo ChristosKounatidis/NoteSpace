@@ -244,27 +244,27 @@ AS $function$
     DECLARE 
             search_key int;
             arg1 VARCHAR(30);
-            arg6 VARCHAR(30)
-            arg2 DATE;
-            arg3 int;
-            arg4 int;
-            arg5 int;
+            arg2 VARCHAR(30);
+            arg3 VARCHAR(30);
+            arg4 VARCHAR(30)
+            arg5 DATE;
+            arg6 int;
+            arg7 int;
+            arg8 int;
     BEGIN
     arg1 := SPLIT_PART(arguments,',',1);
-    arg2 := SPLIT_PART(arguments,',',1);
-    arg := SPLIT_PART(arguments,',',1);
-    arg1 := SPLIT_PART(arguments,',',1);
-    arg1 := SPLIT_PART(arguments,',',1);
+    arg2 := SPLIT_PART(arguments,',',2);
+    arg3 := SPLIT_PART(arguments,',',3);
+    arg4 := SPLIT_PART(arguments,',',4);
 
     IF table_name = 'Artist' THEN
     search_key := search_item(old_data,'Artist');
-    arg1 := select SPLIT_PART(arguments,',',1);
-    UPDATE Artist SET WHERE id = search_key;
+    UPDATE Artist a SET a.name=arg1 WHERE a.id = search_key;
 
     ELSIF table_name = 'Producer' THEN
     search_key := search_item(old_data,'Producer');
-    arg1 := select SPLIT_PART(arguments,',' ,1);
-    UPDATE Artist SET WHERE id = search_key;
+
+    UPDATE Producer p SET p.name=arg1 WHERE p.id = search_key;
     
     ELSIF table_name = 'Song' THEN
     search_key := search_item(old_data,'Song');
@@ -272,23 +272,23 @@ AS $function$
     //album
     //artist
     //producer
-    arg1 := SPLIT_PART(arguments,',',1);
-    arg := SPLIT_PART(arguments,',',2);
-    arg := SPLIT_PART(arguments,',',3);
-    arg := SPLIT_PART(arguments,',',4);
+    arg6 = search_item(arg2,'Album');
+    arg7 = search_item(arg4,'Producer');
+    arg8 = search_item(arg3,'Artist');
 
+    UPDATE Song s SET s.name=arg1 s.producer=arg7 s.album=arg6  WHERE s.id = search_key;
 
-
-    UPDATE Artist SET WHERE id = search_key;
+    UPDATE Artist_Song a SET a.artist=arg8 WHERE song = search_key;
     
     ELSIF table_name = 'Album' THEN
-    arg1 := SPLIT_PART(arguments,',',1);//onoma
-    arg6 := SPLIT_PART(arguments,',',2);//artist
-    arg2 := SPLIT_PART(arguments,',',3);//date
-    arg2 := search_item(arg6,'Album');
     search_key := search_item(old_data,'Album');
+    --onoma
+    --artist
+    --date
+    arg6 := search_item(arg6,'Album');
+    
 
-    UPDATE Album a SET a.name=arg1 a.artist=arg6 a.date=arg2::date WHERE id = search_key;
+    UPDATE Album a SET a.name=arg1 a.artist=arg6 a.date=arg3::date WHERE a.id = search_key;
     
     END IF;
     END;
