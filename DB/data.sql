@@ -117,4 +117,4 @@ select artists();
 select producers();
 select albums();
 select songs();
-
+select new_User('admin','admin');

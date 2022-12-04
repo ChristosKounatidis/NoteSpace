@@ -1,3 +1,5 @@
+--check user gia to LOGIN
+
 CREATE OR REPLACE FUNCTION checkuser(un VARCHAR(30),pass VARCHAR(30))
  RETURNS Boolean
  LANGUAGE plpgsql
@@ -14,7 +16,7 @@ AS $function$
 $function$;
 
 ----------------------------------------------------------
---search functions for data
+--search Album me parametrous
 
 CREATE OR REPLACE FUNCTION search_album(album_name VARCHAR(30) default null ,song_name VARCHAR(30)default null ,artist_name VARCHAR(30) default null)
  RETURNS TABLE (name varchar)
@@ -92,6 +94,9 @@ DECLARE
     END;
 $function$;
 
+-----------------------------------------------------------------------------------------------------
+--search Song me parametro tous allous pinakes
+
 CREATE OR REPLACE FUNCTION search_song(search_key VARCHAR(30),search_method VARCHAR(30))
  RETURNS TABLE (name varchar)
  LANGUAGE plpgsql
@@ -128,13 +133,8 @@ DECLARE
     END;
 $function$;
 
-
-
-
-
-
 -----------------------------------------------------------------------------------------------------
---search_x2 ,functions only to used in other functions
+--search pou epistrefei id OXI NAME
 
 CREATE OR REPLACE FUNCTION search_item(item_name VARCHAR(30),Tname VARCHAR(30))
  RETURNS TABLE (id int)
@@ -167,6 +167,7 @@ DECLARE search_key VARCHAR(40);
 $function$;
 
 -----------------------------------------------------------------------------------------------------
+--Anazhthsh gia Artist kai Producer directly kai Album kai Song emmesa
 
 CREATE OR REPLACE FUNCTION search(item_name VARCHAR(30),Tname VARCHAR(30))
  RETURNS TABLE (name varchar(30))
@@ -198,6 +199,7 @@ DECLARE search_key VARCHAR(40);
 $function$;
 
 -----------------------------------------------------------------------------------------------------
+--delete(douleuei gia OLA)
 
 CREATE OR REPLACE FUNCTION delete(name VARCHAR(30),Tname VARCHAR(15))
  RETURNS void
@@ -233,6 +235,7 @@ AS $function$
 $function$;
 
 -----------------------------------------------------------------------------------------------
+--edit item (gia OLA)
 
 CREATE OR REPLACE FUNCTION edit_item(item_id int,table_name VARCHAR(15),arguments VARCHAR(120))
  RETURNS void
@@ -254,7 +257,6 @@ AS $function$
     arg1 := select SPLIT_PART(arguments,',',1);
     arg3 := select SPLIT_PART(arguments,',',2);
     arg4 := select SPLIT_PART(arguments,',',3);
-
 
     UPDATE SET WHERE id = item_id;
     
