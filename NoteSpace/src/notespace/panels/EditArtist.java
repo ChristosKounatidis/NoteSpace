@@ -10,14 +10,15 @@ package notespace.panels;
  * @author it174
  */
 public class EditArtist extends javax.swing.JPanel {
-
-    /**
-     * Creates new form EditArtist
-     */
+    
+    public EditArtist() {
+        initComponents();
+        contentPanel.setText("new Artist");
+    }
+    
     public EditArtist(String s) {
         initComponents();
         contentPanel.setText(s);
-
     }
 
     /**

@@ -13,17 +13,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -50,8 +47,8 @@ public class Managment extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         artistBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        insertBtn = new javax.swing.JButton();
+        insertCombo = new javax.swing.JComboBox<>();
         artistPanel = new javax.swing.JPanel();
         albumPanel = new javax.swing.JPanel();
         artLabel = new javax.swing.JLabel();
@@ -91,9 +88,14 @@ public class Managment extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Νέα εγγραφή");
+        insertBtn.setText("Νέα εγγραφή");
+        insertBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertBtnActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Τραγούδια", "Παραγωγοί", "Καλλιτέχνες", "Album" }));
+        insertCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artist", "Producer", "Album", "Song" }));
 
         artistPanel.setAutoscrolls(true);
         artistPanel.setMaximumSize(new java.awt.Dimension(300, 500));
@@ -187,11 +189,6 @@ public class Managment extends javax.swing.JFrame {
 
         songFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Album", "Producer", "Artist", "Category" }));
         songFilter.setToolTipText("Select your search method");
-        songFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                songFilterActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,9 +243,9 @@ public class Managment extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1)
                         .addGap(820, 820, 820)
-                        .addComponent(jButton3)
+                        .addComponent(insertBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(insertCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -260,8 +257,8 @@ public class Managment extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(insertBtn)
+                            .addComponent(insertCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -391,9 +388,34 @@ public class Managment extends javax.swing.JFrame {
         songPanel.setVisible(true);
     }//GEN-LAST:event_songBtnActionPerformed
 
-    private void songFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_songFilterActionPerformed
+    private void insertBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBtnActionPerformed
+        String insertTable = insertCombo.getSelectedItem().toString();
         
-    }//GEN-LAST:event_songFilterActionPerformed
+        EditFrame insert = new EditFrame();
+        FlowLayout editlayout = new FlowLayout();
+        insert.setLayout(editlayout);
+        
+        if(insertTable.equals("Artist")){
+            EditArtist artist = new EditArtist();
+            insert.add(artist,editlayout);
+            insert.setVisible(true);
+        }
+        else if(insertTable.equals("Producer")){
+            EditProducer artist = new EditProducer();
+            insert.add(artist,editlayout);
+            insert.setVisible(true);
+        }
+        else if(insertTable.equals("Album")){
+            EditAlbum artist = new EditAlbum();
+            insert.add(artist,editlayout);
+            insert.setVisible(true);
+        }
+        else if(insertTable.equals("Song")){
+            EditSong artist = new EditSong();
+            insert.add(artist,editlayout);
+            insert.setVisible(true);
+        }
+    }//GEN-LAST:event_insertBtnActionPerformed
     
     /**
      * @param args the command line arguments
@@ -526,8 +548,8 @@ public class Managment extends javax.swing.JFrame {
     private javax.swing.JButton artistBtn;
     private javax.swing.JPanel artistPanel;
     private javax.swing.JTextField artistText;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton insertBtn;
+    private javax.swing.JComboBox<String> insertCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel prodLabel;

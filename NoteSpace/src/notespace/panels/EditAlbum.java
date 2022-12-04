@@ -10,14 +10,15 @@ package notespace.panels;
  * @author it174
  */
 public class EditAlbum extends javax.swing.JPanel {
-
-    /**
-     * Creates new form EditAlbum
-     */
+    
+    public EditAlbum() {
+        initComponents();
+        contentPanel.setText("new Album");
+    }
+    
     public EditAlbum(String s) {
         initComponents();
         contentPanel.setText(s);
-
     }
 
     /**

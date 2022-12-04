@@ -41,7 +41,7 @@ public class Connection {
     }
     public static ArrayList<String> search(String keyword, String table) throws Exception{
         ArrayList<String> names = new ArrayList<>();
-        String[] args ;
+        String[] args;
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -140,5 +140,34 @@ public class Connection {
             Connection.dbConnection.close();
                         
         } catch (Exception e){System.out.println(e);}           
+    }
+    public static void insert(String newData, String table){
+        try {
+            Class.forName (driverClassName);
+            dbConnection = DriverManager.getConnection (url, username, passwd);
+            statement    = dbConnection.createStatement();
+            String selectString = "";
+            String[] args;
+            args = newData.split(",");       
+            
+            if(table.equals("Artist")){
+            selectString = "select new_Artist('"+newData+"');";
+            }
+            else if(table.equals("Producer")){
+            selectString = "select new_Producer('"+newData+"');";
+            }
+            else if(table.equals("Album")){
+            selectString = "select new_Album('"+args[0]+"','"+args[1]+"','"+args[2]+"');";
+            }
+            else if(table.equals("Song")){
+            selectString = "select new_Song('"+args[0]+"','"+args[1]+"','"+args[2]+"','"+args[3]+"','"+args[4]+"');";
+            }
+                        
+            rs = statement.executeQuery(selectString);
+            
+            Connection.statement.close();
+            Connection.dbConnection.close();
+                        
+        } catch (Exception e){System.out.println(e);}  
     }
 }

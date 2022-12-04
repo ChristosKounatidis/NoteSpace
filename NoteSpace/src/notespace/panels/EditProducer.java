@@ -11,13 +11,14 @@ package notespace.panels;
  */
 public class EditProducer extends javax.swing.JPanel {
 
-    /**
-     * Creates new form EditProducer
-     */
+    public EditProducer() {
+        initComponents();
+        contentPanel.setText("new Producer");
+    }
+    
     public EditProducer(String s) {
         initComponents();
         contentPanel.setText(s);
-
     }
 
     /**
