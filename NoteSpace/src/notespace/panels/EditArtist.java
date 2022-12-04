@@ -5,6 +5,10 @@
  */
 package notespace.panels;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import notespace.Connection;
+
 /**
  *
  * @author it174
@@ -107,7 +111,14 @@ public class EditArtist extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        // TODO add your handling code here:
+        if(contentPanel.getText().toString().equals("new Artist")){
+            Connection.insert(newArtistName.getText().toString(),"Artist");//TO PANEL EINAI APO INSERT
+        }
+        else{
+            Connection.edit(contentPanel.getText().toString(),newArtistName.getText().toString(),"Artist");//TO PANEL EINAI APO EDIT
+        }
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        frame.dispose();
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void newArtistNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newArtistNameActionPerformed

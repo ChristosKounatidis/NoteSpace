@@ -5,6 +5,8 @@
  */
 package notespace.panels;
 
+import notespace.Connection;
+
 /**
  *
  * @author it174
@@ -99,7 +101,12 @@ public class EditProducer extends javax.swing.JPanel {
     }//GEN-LAST:event_newProducerNameActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
-        // TODO add your handling code here:
+        if(contentPanel.getText().toString().equals("new Producer")){
+            Connection.insert(newProducerName.getText().toString(),"Producer");//TO PANEL EINAI APO INSERT
+        }
+        else{
+            Connection.edit(contentPanel.getText().toString(),newProducerName.getText().toString(),"Producer");//TO PANEL EINAI APO EDIT
+        }
     }//GEN-LAST:event_ConfirmActionPerformed
 
 
