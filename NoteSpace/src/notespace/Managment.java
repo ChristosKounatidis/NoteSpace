@@ -308,7 +308,7 @@ public class Managment extends javax.swing.JFrame {
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
-            names = Connection.search(songText.getText(),"Artist");
+            names = Connection.search(artistText.getText(),"Artist");
         } catch (Exception e){System.out.println(e);} 
         
         //Γεμ´ιζει το JPanel με τα string
@@ -329,7 +329,7 @@ public class Managment extends javax.swing.JFrame {
         ArrayList<String> names = null;
         try {
             //Πέρνει περιεχ´ομενα απο την sql
-            names = Connection.search(songText.getText(),"Producer");
+            names = Connection.search(producerText.getText(),"Producer");
         } catch (Exception e){System.out.println(e);} 
         
         //Γεμ´ιζει το JPanel με τα string
